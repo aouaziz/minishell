@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:51:04 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/05/29 23:10:14 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int					g_status;
 
-enum e_TOKEN_ENUM
+enum				e_TOKEN_ENUM
 {
 	IN,
 	OUT,
@@ -81,7 +81,7 @@ void				ft_add_to_the_lst(char **cmd, t_mini *mini,
 						t_env *env_list);
 char				**ft_fix_c_in_qoutes(char **cmds, t_env *env_list);
 void				ft_fill_cmds(t_mini *tmp);
-char				**ft_lexer(char *cmd, char **env);
+void				ft_lexer(char *cmd, char **env);
 t_mini				*ft_mini_lst_last(t_mini *lst);
 t_env				*fill_env_list(t_env *env_list, char **cmd);
 void				ft_env_lstadd_back(t_env **lst, t_env *new);

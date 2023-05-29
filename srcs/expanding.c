@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:54:17 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/05/29 23:11:13 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_name(t_env *env, char *line, t_space *l)
 	l->output[l->input_len] = '\0';
 	ft_strncpy(l->output, line + l->i, l->input_len);
 	l->output = get_value(env, l->output);
-	l->i = l->output_len;
+	l->i = l->output_len - 1;
 	return (l->output);
 }
 

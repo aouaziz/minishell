@@ -6,13 +6,13 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:39:12 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/05/29 23:10:56 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	**ft_lexer(char *cmd, char **env)
+void	ft_lexer(char *cmd, char **env)
 {
 	int		i;
 	char	**cmds;
@@ -33,7 +33,6 @@ char	**ft_lexer(char *cmd, char **env)
 		i++;
 	}
 	ft_add_to_the_lst(cmds, shell, env_list);
-	return (cmds);
 }
 
 void	handle_sigint(int sig)
@@ -52,7 +51,6 @@ void	handle_sigint(int sig)
 int	main(int ac, char *av[], char **env)
 {
 	char	*line;
-	char	**cmds;
 	int		i;
 
 	(void)av;
@@ -74,6 +72,6 @@ int	main(int ac, char *av[], char **env)
 		signal(SIGQUIT, handle_sigint);
 		add_history(line);
 		if (!ft_check(line))
-			cmds = ft_lexer(line, env);
+			ft_lexer(line, env);
 	}
 }
