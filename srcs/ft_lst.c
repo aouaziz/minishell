@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:55:22 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 20:04:11 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ t_mini	*ft_minilstnew(char **str)
 		i++;
 	}
 	ft_fill_cmds(new);
+	if(ft_fill_fds(new))
+		return (NULL);
 	return (new);
 }
 
@@ -77,17 +79,9 @@ void	ft_token_list_add_back(t_token **lst, t_token *new)
 
 void	ft_mini_list_print(t_mini *lst)
 {
-	int		i;
-	char	*cmd;
 
-	i = 0;
 	while (lst)
 	{
-		for (t_list *cmd_node = lst->cmd_list; cmd_node != NULL; cmd_node = cmd_node->next)
-		{
-			cmd = cmd_node->content;
-			printf("Linkdlist Command: %s\n", cmd);
-		}
 		printf("CMDs:\n");
 		for (int i = 0; lst->cmds[i] != NULL; i++)
 			printf("  %d: %s\n", i, lst->cmds[i]);
@@ -99,6 +93,9 @@ void	ft_mini_list_print(t_mini *lst)
 			printf("Output File: %s\n", token->outfile);
 			printf("Delimiter: %s\n", token->delimiter);
 		}
+		printf("fd:\n");
+		printf("in:\t %d\n", lst->in);
+		printf("out: \t%d\n", lst->out);
 		printf("next | \n");
 		lst = lst->next;
 	}

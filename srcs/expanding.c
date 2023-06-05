@@ -6,13 +6,13 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/29 23:11:13 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 15:23:43 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-char	*get_name(t_env *env, char *line, t_space *l)
+char	*get_name(char *line, t_space *l)
 {
 	l->i++;
 	l->output_len = l->i;
@@ -29,7 +29,7 @@ char	*get_name(t_env *env, char *line, t_space *l)
 		return (NULL);
 	l->output[l->input_len] = '\0';
 	ft_strncpy(l->output, line + l->i, l->input_len);
-	l->output = get_value(env, l->output);
+	l->output = get_value(l->output);
 	l->i = l->output_len - 1;
 	return (l->output);
 }
@@ -63,9 +63,11 @@ char	*str_fill_up(char *line, t_space *l, char *c)
 	return (c);
 }
 
-char	*get_value(t_env *env, char *name)
+char	*get_value(char *name)
 {
 	char	*unprintable;
+	t_env *env;
+	env = env_list;
 
 	if (*name > '1' && *name <= '9')
 	{
@@ -88,7 +90,7 @@ char	*get_value(t_env *env, char *name)
 	return (unprintable);
 }
 
-char	*ft_fix_env(char *line, t_env *env)
+char	*ft_fix_env(char *line)
 {
 	t_space	l;
 
@@ -105,7 +107,7 @@ char	*ft_fix_env(char *line, t_env *env)
 		}
 		if (line[l.i] == '$' && l.c != '\'')
 		{
-			l.output = get_name(env, line, &l);
+			l.output = get_name(line, &l);
 			l.input = ft_strjoin(l.input, l.output);
 		}
 		else

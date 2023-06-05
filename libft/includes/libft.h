@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:48:06 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/27 18:45:36 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 15:27:09 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,5 @@ void				ft_free(char **str);
 int					ft_strcmp(char *s1, char *s2);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_charjoin(char *s1, char s2);
+int	ft_strlen_array(char **array);
 #endif

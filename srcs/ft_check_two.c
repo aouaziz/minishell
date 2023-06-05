@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:51:35 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 13:25:01 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,28 +63,6 @@ int	check_quotes(char *str)
 	return (0);
 }
 
-void	ft_fill_cmds(t_mini *tmp)
-{
-	int		count;
-	int		i;
-	t_list	*curr;
-
-	ft_lstdel(&tmp->cmd_list, '\x7F');
-	count = ft_lstsize(tmp->cmd_list);
-	i = 0;
-	tmp->cmds = malloc(sizeof(char *) * (count + 1));
-	if (tmp->cmds == NULL)
-		return ;
-	tmp->cmds[count] = NULL;
-	curr = tmp->cmd_list;
-	while (curr)
-	{
-		tmp->cmds[i] = curr->content;
-		i++;
-		curr = curr->next;
-	}
-}
-
 void	ft_lst_fix(t_mini *lst)
 {
 	lst->cmd_list = NULL;
@@ -92,3 +70,46 @@ void	ft_lst_fix(t_mini *lst)
 	lst->token_list = NULL;
 	lst->next = NULL;
 }
+void	ft_free_lst(t_list *a)
+{
+	t_list	*tmp;
+
+	while (a)
+	{
+		tmp = a->next;
+		free(a);
+		a = tmp;
+	}
+}
+void	ft_free_mini(t_mini **mini)
+{
+	t_mini	*tmp;
+
+	while (*mini)
+	{
+		tmp = (*mini)->next;
+		ft_free((*mini)->cmds);
+		ft_free_token((*mini)->token_list);
+		ft_free_lst((*mini)->cmd_list);
+		free(*mini);
+		(*mini) = tmp;
+	}
+}
+
+// void	ft_free_env(t_env **head)
+// {
+// 	t_env	*current;
+// 	t_env	*next;
+
+// 	current = *head;
+// 	next = NULL;
+// 	while (current != NULL)
+// 	{
+// 		next = current->next;
+// 		free(current->env_name);  // Free env_name
+// 		free(current->env_value); // Free env_value
+// 		free(current);            // Free the current element
+// 		current = next;
+// 	}
+// 	*head = NULL;
+// }

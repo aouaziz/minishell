@@ -3,9 +3,9 @@ NAME = Minishell
 LIBFT = ./libft/
 
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
-CC = clang
+CC = cc
 
 #FSANITIZE = -fsanitize=address -g
 
@@ -40,7 +40,7 @@ all : $(NAME)
 
 %.o: %.c
 #	@echo "$(B_GREEN)Compiling: $(GREEN)$(notdir $<) 🔨$(NC)"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC)  $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)█\033[0m\c"
 
 $(NAME): compile $(OBJECTS) $(LIBFT)libft.a  done credit

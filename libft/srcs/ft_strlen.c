@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:19:54 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/02/18 22:59:08 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 15:33:09 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,20 @@ int	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int	ft_strlen_array(char **array)
+{
+	int length = 0;
+	int i;
+	i = 0;
+	if (array == NULL)
+		return (0);
+
+	while (array[i] != NULL)
+	{
+		length++;
+		i++;
+	}
+	return (length);
 }

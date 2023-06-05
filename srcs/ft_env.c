@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:24:19 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:43:01 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/04 15:10:27 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,13 @@ char	*ft_get_env_value(char *s)
 	return (value);
 }
 
-t_env	*fill_env_list(t_env *env_list, char **cmd)
+void	fill_env_list(char **cmd)
 {
 	int		i;
 	char	*name;
 	char	*value;
 	t_env	*tmp;
+	env_list = NULL;
 
 	i = 0;
 	while (cmd[i])
@@ -90,27 +91,26 @@ t_env	*fill_env_list(t_env *env_list, char **cmd)
 		{
 			free(name);
 			free(value);
-			return (NULL);
+			return ;
 		}
 		tmp = ft_env_lst_new(name, value);
 		ft_env_lstadd_back(&env_list, tmp);
 		i++;
 	}
-	return (env_list);
 }
 
-// void	print_env_list(t_env *env_list, char **env)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (env_list)
-// 	{
-// 		printf("\tenv: %s\n", env[i]);
-// 		printf("env_name: %s\n", env_list->env_name);
-// 		printf("env_value: %s\n", env_list->env_value);
-// 		printf("next: %p\n", (void *)env_list->next);
-// 		env_list = env_list->next;
-// 		i++;
-// 	}
-// }
+void	print_env_list(t_env *env_list, char **env)
+{
+	int	i;
+	i = 0;
+	(void) env;
+	while (env_list)
+	{
+	//	printf("\tenv: %s\n", env[i]);
+		printf("env_name: %s\n", env_list->env_name);
+		printf("env_value: %s\n", env_list->env_value);
+		printf("next: %p\n", (void *)env_list->next);
+		env_list = env_list->next;
+		i++;
+	}
+}
