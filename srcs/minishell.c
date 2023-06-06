@@ -6,20 +6,19 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 15:12:58 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/05 10:43:21 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_lexer(char *cmd, char **env)
+void	ft_lexer(char *cmd)
 {
 	int		i;
 	char	**cmds;
-	t_mini	*shell;
 
 	i = 0;
-	shell = NULL;
+	shell->mini = NULL;
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '|', (char)156);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, ' ', (char)155);
 	cmd = add_spaces(cmd);
@@ -29,7 +28,7 @@ void	ft_lexer(char *cmd, char **env)
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)156, '|');
 		i++;
 	}
-	ft_add_to_the_lst(cmds, shell,env);
+	ft_add_to_the_lst(cmds, shell->mini);
 	free(cmd);
 }
 
@@ -51,7 +50,9 @@ int	main(int ac, char *av[], char **env)
 	char	*line;
 
 	(void)av;
-	fill_env_list(env);
+	shell = malloc(sizeof(t_shell));
+	shell->env = env;
+	shell->env_list = fill_env_list(shell->env, shell->env_list);
 	if (ac != 1)
 	{
 		printf("wrong argument");
@@ -69,6 +70,6 @@ int	main(int ac, char *av[], char **env)
 		signal(SIGQUIT, handle_sigint);
 		add_history(line);
 		if (!ft_check(line))
-			ft_lexer(line, env);
+			ft_lexer(line);
 	}
 }

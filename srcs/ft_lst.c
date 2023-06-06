@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 20:04:11 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/06 07:25:34 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_mini	*ft_minilstnew(char **str)
 		i++;
 	}
 	ft_fill_cmds(new);
-	if(ft_fill_fds(new))
+	if (ft_fill_fds(new))
 		return (NULL);
 	return (new);
 }
@@ -50,16 +50,8 @@ t_token	*add_token_to_list(t_token *token_list, int type, char *content)
 	if (!new)
 		return (NULL);
 	new->type = type;
-	new->infile = NULL;
-	new->outfile = NULL;
-	new->delimiter = NULL;
+	new->file = content;
 	new->next = NULL;
-	if (type == IN)
-		new->infile = content;
-	else if (type == OUT || type == APD)
-		new->outfile = content;
-	else if (type == DOC)
-		new->delimiter = content;
 	ft_token_list_add_back(&token_list, new);
 	return (token_list);
 }
@@ -79,7 +71,6 @@ void	ft_token_list_add_back(t_token **lst, t_token *new)
 
 void	ft_mini_list_print(t_mini *lst)
 {
-
 	while (lst)
 	{
 		printf("CMDs:\n");
@@ -89,9 +80,7 @@ void	ft_mini_list_print(t_mini *lst)
 		for (t_token *token = lst->token_list; token != NULL; token = token->next)
 		{
 			printf("Token Type: %d\n", token->type);
-			printf("Input File: %s\n", token->infile);
-			printf("Output File: %s\n", token->outfile);
-			printf("Delimiter: %s\n", token->delimiter);
+			printf("Input File: %s\n", token->file);
 		}
 		printf("fd:\n");
 		printf("in:\t %d\n", lst->in);

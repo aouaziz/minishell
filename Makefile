@@ -18,7 +18,8 @@ SOURCES =			./srcs/minishell.c \
 					./srcs/ft_list_two.c \
 					./srcs/ft_env.c \
 					./srcs/expanding.c \
-					./srcs/ft_lst_three.c
+					./srcs/ft_lst_three.c \
+					./srcs/heredoc.c
 
 
 NC			= \033[0m
@@ -40,11 +41,11 @@ all : $(NAME)
 
 %.o: %.c
 #	@echo "$(B_GREEN)Compiling: $(GREEN)$(notdir $<) 🔨$(NC)"
-	@$(CC)  $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)█\033[0m\c"
 
 $(NAME): compile $(OBJECTS) $(LIBFT)libft.a  done credit
-	@$(CC)  $(READLINE) $(OBJECTS)  $(LIBFT)libft.a -o  $(NAME)
+	@$(CC) $(READLINE) $(OBJECTS)  $(LIBFT)libft.a -o  $(NAME)
 
 $(LIBFT)libft.a :
 	@make bonus -C $(LIBFT)

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 20:03:32 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/06 07:24:04 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "../libft/includes/libft.h"
 # include <readline/history.h>
 # include <readline/readline.h>
-
-int					g_status;
 
 enum				e_TOKEN_ENUM
 {
@@ -30,9 +28,7 @@ enum				e_TOKEN_ENUM
 typedef struct s_token
 {
 	int				type;
-	char			*infile;
-	char			*outfile;
-	char			*delimiter;
+	char			*file;
 	struct s_token	*next;
 }					t_token;
 
@@ -41,8 +37,8 @@ typedef struct s_mini
 	t_list			*cmd_list;
 	t_token			*token_list;
 	char			**cmds;
-	int			in;
-	int 		out;
+	int				in;
+	int				out;
 	struct s_mini	*next;
 }					t_mini;
 
@@ -53,7 +49,15 @@ typedef struct s_env
 	struct s_env	*next;
 }					t_env;
 
-t_env				*env_list;
+typedef struct s_shell
+{
+	t_mini			*mini;
+	int				g_status;
+	t_env			*env_list;
+	char			**env;
+}					t_shell;
+
+t_shell				*shell;
 
 typedef struct s_space
 {
@@ -81,12 +85,12 @@ void				ft_token_list_add_back(t_token **lst, t_token *new);
 t_token				*ft_token_lst_last(t_token *lst);
 void				ft_mini_list_print(t_mini *lst);
 void				ft_miniadd_back(t_mini **list, t_mini *new);
-void				ft_add_to_the_lst(char **cmd, t_mini *mini, char **env);
+void				ft_add_to_the_lst(char **cmd, t_mini *mini);
 char				**ft_fix_c_in_qoutes(char **cmds);
 void				ft_fill_cmds(t_mini *tmp);
-void				ft_lexer(char *cmd, char **env);
+void				ft_lexer(char *cmd);
 t_mini				*ft_mini_lst_last(t_mini *lst);
-void				fill_env_list(char **cmd);
+t_env				*fill_env_list(char **cmd, t_env *env_list);
 void				ft_env_lstadd_back(t_env **lst, t_env *new);
 t_env				*ft_env_lstlast(t_env *lst);
 t_env				*ft_env_lst_new(void *content, void *content_value);
@@ -110,5 +114,7 @@ void				ft_free_env(t_env **head);
 void				ft_free_cmd(t_list *a);
 void				ft_free_mini(t_mini **mini);
 void				ft_free_token(t_token *token_list);
-int	ft_fill_fds(t_mini *tmp);
+int					ft_fill_fds(t_mini *tmp);
+int					ft_doc(char *doc);
+void	handle_doc_sigint(int signal);
 #endif

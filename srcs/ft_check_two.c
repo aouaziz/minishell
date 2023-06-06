@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 13:25:01 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/05 09:42:12 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	row_check(char *str)
 	if (str[0] == '|' || str[len - 1] == '|')
 	{
 		printf("Error: pipe syntax error detected.\n");
-		g_status = 258;
+		shell->g_status = 258;
 		return (1);
 	}
 	else if (str[len - 1] == '>' || str[len - 1] == '<')
 	{
 		printf("Error: bracket syntax error detected.\n");
-		g_status = 258;
+		shell->g_status = 258;
 		return (1);
 	}
 	return (0);
@@ -57,7 +57,7 @@ int	check_quotes(char *str)
 	if (l.output_len % 2 != 0 || l.input_len % 2 != 0)
 	{
 		printf("Error: unclosed quotes detected .\n ");
-		g_status = 258;
+		shell->g_status = 258;
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:56:58 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/05 09:41:52 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_brackets(char *str)
 			if (str[count] == '<' || str[count] == '>' || str[count] == '|')
 			{
 				printf("Error: bracket syntax error detected.\n");
-				g_status = 258;
+				shell->g_status = 258;
 				return (1);
 			}
 		}
@@ -75,7 +75,7 @@ int	ft_check(char *line)
 		return (1);
 	else if (ft_strlen(line) == 1)
 	{
-		g_status = 127;
+		shell->g_status = 127;
 		return (1);
 	}
 	return (0);
@@ -97,7 +97,7 @@ int	check_pipe(char *str)
 			else if (pipe_found)
 			{
 				printf("Error: pipe syntax error detected.\n");
-				g_status = 258;
+				shell->g_status = 258;
 				return (1);
 			}
 		}

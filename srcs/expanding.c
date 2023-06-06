@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 15:23:43 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/05 10:45:02 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_name(char *line, t_space *l)
 	l->output_len = l->i;
 	l->input_len = 0;
 	if (line[l->i] == '?' && ft_strlen(line) == 2)
-		return (ft_itoa(g_status));
+		return (ft_itoa(shell->g_status));
 	while (ft_isalnum(line[l->output_len]))
 	{
 		l->input_len++;
@@ -66,9 +66,9 @@ char	*str_fill_up(char *line, t_space *l, char *c)
 char	*get_value(char *name)
 {
 	char	*unprintable;
-	t_env *env;
-	env = env_list;
+	t_env	*env;
 
+	env = shell->env_list;
 	if (*name > '1' && *name <= '9')
 	{
 		name++;

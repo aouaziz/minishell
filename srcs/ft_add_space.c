@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:54:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 19:55:55 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/06 07:20:21 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_check_operator(t_space *s, char *input)
 		s->c = '<';
 	else if (input[s->i] == '>' && input[s->i + 1] == '>')
 		s->c = '>';
-	if (input[s->i - 1] != ' ')
+	if (s->i -1 > 0 && input[s->i - 1] != ' ')
 		s->output[s->output_len++] = ' ';
 	s->output[s->output_len++] = s->c;
 	s->output[s->output_len++] = s->c;
@@ -30,7 +30,7 @@ void	ft_check_operator(t_space *s, char *input)
 
 void	ft_check_operator_two(t_space *s, char *input)
 {
-	if (input[s->i - 1] != ' ')
+	if (s->i - 1 > 0 && input[s->i - 1] != ' ')
 		s->output[s->output_len++] = ' ';
 	s->output[s->output_len++] = input[s->i];
 	s->output[s->output_len++] = ' ';

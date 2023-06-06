@@ -6,28 +6,26 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/04 20:04:34 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/05 16:11:02 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	ft_add_to_the_lst(char **cmd, t_mini *mini, char **env)
+void	ft_add_to_the_lst(char **cmd, t_mini *mini)
 {
 	int		i;
 	t_mini	*tmp;
 	char	**cmds;
 
 	i = 0;
-	(void)env;
 	while (cmd[i])
 	{
 		cmds = ft_split(cmd[i], ' ');
-
 		cmds = ft_fix_c_in_qoutes(cmds);
 		tmp = ft_minilstnew(cmds);
-		if(tmp == NULL)
-			return;
+		if (tmp == NULL)
+			return ;
 		ft_miniadd_back(&mini, tmp);
 		i++;
 	}
@@ -43,8 +41,10 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	{
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)155, ' ');
 		if (i > 0 && ft_strcmp(cmds[i - 1], "<<"))
+		{
 			cmds[i] = ft_fix_env(cmds[i]);
-		cmds[i] = remove_quotes(cmds[i]);
+			cmds[i] = remove_quotes(cmds[i]);
+		}
 		i++;
 	}
 	return (cmds);
