@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/06 07:24:04 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/08 20:19:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "../libft/includes/libft.h"
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <sys/types.h>
+# include <dirent.h>
 
 enum				e_TOKEN_ENUM
 {
@@ -68,6 +70,15 @@ typedef struct s_space
 	int				input_len;
 	int				i;
 }					t_space;
+
+//exec
+typedef	strcut s_exe
+{
+	int **tube;
+	int size;
+}t_exe;
+
+//
 
 char				*ft_replace_c_with_s_in_quotes(char *line, char c, char s);
 char				*add_spaces(char *input);
