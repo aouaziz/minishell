@@ -6,11 +6,10 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:56:54 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 08:16:19 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mini.h"
 
 int  unset_cmd(char **env, char **argv)
 {

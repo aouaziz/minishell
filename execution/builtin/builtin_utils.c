@@ -42,7 +42,7 @@ void    execute_builtin(t_shell *shell, char **str, int i)
     if (!ftt_strcmp("cd", str[0]))
         shell->env = cd_cmd(str, shell->env);
    else if (!ftt_strcmp("pwd", str[0]))
-        pwd_cmd();
+        pwd_cmd(shell->env, str);
     else if (!ftt_strcmp("echo", str[0]))
         echo_cmd(str);
     else if (!ftt_strcmp("exit", str[0]))

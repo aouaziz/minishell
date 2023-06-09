@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 07:56:57 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:56:58 by mel-garr         ###   ########.fr       */
+/*   Created: 2023/06/09 08:17:27 by mel-garr          #+#    #+#             */
+/*   Updated: 2023/06/09 08:33:00 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mini.h"
 
-int  pwd_cmd(char **env, char **args)
+void  pwd_cmd(char **env, char **args)
 {
   int i;
   char *pwd;
@@ -37,8 +37,6 @@ int  pwd_cmd(char **env, char **args)
         }
     write(1, "\n", 1);
   }
-  free(pwd);
-  return (0);
 }
 
 int main(int ac, char **av, char **env)
