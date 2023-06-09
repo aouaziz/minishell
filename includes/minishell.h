@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/09 07:24:04 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 08:22:10 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ typedef struct s_space
 }					t_space;
 
 //exec
-typedef	strcut s_exe
+typedef struct s_exe
 {
 	int **tube;
 	int size;

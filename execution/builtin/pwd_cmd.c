@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 08:17:27 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 08:33:00 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:09:00 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void  pwd_cmd(char **env, char **args)
   }
 }
 
-int main(int ac, char **av, char **env)
-{
-  pwd_cmd(env, av);
-}
+// int main(int ac, char **av, char **env)
+// {
+//   pwd_cmd(env, av);
+// }

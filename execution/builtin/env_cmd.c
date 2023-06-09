@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:05 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:57:06 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:12:14 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int  env_cmd(char **env, char **args)
   print_env(env);
   return (1);
 }
-/*int main(int ac, char **av, char **env)
-{
-  env_cmd(env, av);
-}*/
+// int main(int ac, char **av, char **env)
+// {
+//   env_cmd(env, av);
+// }

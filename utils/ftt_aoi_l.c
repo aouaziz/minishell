@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:30 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:57:31 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:10:08 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long  ftt_atoi_l(char *str)
   while(str[i] && ftt_isdigit(str[i]))
   {
     result = (result * 10) + str[i] - 48;
-    if (out_of_range(result, signe) == -1);
+    if (out_of_range(result, signe) == -1)
       break;
     i++;
   }

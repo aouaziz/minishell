@@ -6,13 +6,13 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:57:09 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 09:19:08 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mini.h"
 
-int  ft_strlen(char *str)
+int  fti_strlen(char *str)
 {
   int i;
 
@@ -29,7 +29,7 @@ int  get_flag(char *str)
   int j;
 
   j = 0;
-  if (ft_strlen(str) < 2)
+  if (fti_strlen(str) < 2)
     return (0);
   if (str[j] != '-' && str[1] != 'n')
     return (0);
@@ -57,13 +57,13 @@ int  cmd_echo(char **str)
     }
   while(str[i])
   {
-    printf("%s",str[i]);
-    if (str[i][0] == '\0')
-      printf (" ");
+    if (str[i][0] != '0')
+      ftt_print_fd(1, str[i]);
+    ftt_print_fd(1, " ");
     i++;
   }
   if (flag == 0)
-    printf("\n");
+    ftt_print_fd(1, "\n");
   return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:25:25 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:25:26 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/09 10:55:58 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 #include "minishell.h"
 
 //builtin
-#define LONG_MIN (-2147483647L - 1)
-#define LONG_MAX 2147483647L
+//#define LONG_MIN (-2147483647L - 1)
+//#define LONG_MAX 2147483647L
 
 //builtin
 int  env_cmd(char **env, char **args);
 int  cd_cmd(char **env, char **args);
 int  cmd_echo(char **str);
 int  export_cmd(char **env, char **argv);
-int  pwd_cmd(char **env, char **args);
-int  unset_cmd(char **env, char **argv);
+void  pwd_cmd(char **env, char **args);
+int unset_cmd(char **env, char **argv);
 
 
 
@@ -39,7 +39,7 @@ char *get_content_env(char **env, char *path);
 void  change_content(char **env, int i, char *s1, char *s2);
 int  env_compatible(char *str);
 void        print_err_env(char *str);
-void  unset_var_env(char **env, int index);
+char **unset_var_env(char **env, int index);
 char **realloc_env_var(char **env, int count);
 void  set_env_var(char **env, int index, char *str);
 
@@ -63,6 +63,7 @@ int ftt_isspace(char c);
 char	*ftt_strrchr(char *s, int c);
 char *ftt_strtrim_space(char *str);
 long  ftt_atoi_l(char *str);
+char **ftt_strdup_2(char **str);
 
   //print
 void  ftt_print_fd(int fd, char *str);

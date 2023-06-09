@@ -48,7 +48,7 @@ void    execute_builtin(t_shell *shell, char **str, int i)
     else if (!ftt_strcmp("exit", str[0]))
         exit_cmd(str, i);
     else if (!ftt_strcmp("env", str[0]))
-        env_cmd(env,str);
+        env_cmd(shell->env,str);
     else if (!ftt_strcmp("unset", str[0]))
         shell->env = unset_cmd(shell->env, str);
     else if (!ftt_strcmp("export", str[0]))
