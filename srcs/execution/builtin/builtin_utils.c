@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 int builtin_fork_status(char **str)
 {
@@ -37,7 +37,7 @@ int builtin_fork_status(char **str)
     return (-1);
 }
 
-void    execute_builtin(t_shell *shell, char **dupli, int status)
+void    execute_builtin(t_shell *shell, t_mini *mini, char **dupli, int status)
 {
     char **str;
 
@@ -47,15 +47,15 @@ void    execute_builtin(t_shell *shell, char **dupli, int status)
     if (!ftt_strcmp("cd", shell->mini->cmds[0]))
         shell->env = cd_cmd(shell->mini->cmds, str);
    else if (!ftt_strcmp("pwd", shell->mini->cmds[0]))
-        pwd_cmd(str, shell->cmds);
+        pwd_cmd(str, mini->cmds);
     else if (!ftt_strcmp("echo", shell->mini->cmds[0]))
         echo_cmd(str);
     else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
-        exit_cmd(shell->cmds);
+        exit_cmd(mini->cmds);
     else if (!ftt_strcmp("env", shell->mini->cmds[0]))
-        env_cmd(str, shell->cmds);
+        env_cmd(str, mini->cmds);
     else if (!ftt_strcmp("unset", shell->mini->cmds[0]))
-        shell->env = unset_cmd(str, shell->cmds);
+        shell->env = unset_cmd(str, mini->cmds);
     else if (!ftt_strcmp("export", shell->mini->cmds[0]))
-        shell->env = export_cmd(str, shell->cmds);
+        shell->env = export_cmd(str, mini->cmds);
 }

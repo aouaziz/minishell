@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:24:15 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:24:16 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 void  change_content(char **env, int i, char *s1, char *s2)
 {

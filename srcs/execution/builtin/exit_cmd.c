@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:02 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:57:03 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:23:15 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 //khassni exit_code leçdim
 //what above max long
@@ -57,13 +57,13 @@ void  check_exit_ret(char *str)
   exit_shell(mini, n);
 }
 
-int exit_cmd(char **argv)
+void exit_cmd(char **argv)
 {
 
   if (argv[2] != 0)
     return (ftt_print_fd(2, "exit\nbash: exit: too many arguments\n"), 1);
   else if (argv[1] == 0)
-    return (ftt_print_fd(1, "exit\n"), old_exit_code);
+    return (ftt_print_fd(1, "exit\n"), /*old_exit_code*/);
   else
     return (check_exit_ret(argv[1]), 16);
   return (69);

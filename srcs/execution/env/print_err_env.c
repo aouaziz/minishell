@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:24:40 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 10:11:10 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 void        print_err_env(char *str)
 {

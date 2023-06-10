@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 void close_pipes(t_exe *exe)
 {
@@ -70,7 +70,7 @@ void    proc_from_in_to_out(t_mini *mini, t_exe *exe, char **env)
     if (builtin_fork_status(mini->cmds) != -1)
     {
         do_pipe_path(mini, exe, 0);
-        execute_builtin(mini, mini->cmds, mini->index, 2);
+        execute_builtin(mini->cmds, env, 2);
         exit(0);
     }
     else
@@ -91,7 +91,7 @@ pid_t   pipe_and_fork(t_shell *shell, t_exe *exe)
     dupli = ftt_strdup_2(shell->env);
     i = 0;
     if (exe->size == 1 && !builtin_fork_status(shell->mini->cmds))
-        return (execute_builtin(shell , dupli, 1), 0);
+        return (execute_builtin(shell , shell->mini, dupli, 1), 0);
     while (i < exe->size)
     {
         fid = fork;

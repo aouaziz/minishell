@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:58:51 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:58:52 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 int  ftt_strncmp(char *s1, char *s2, int n)
 {

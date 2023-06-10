@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/10 15:09:27 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:24:38 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,63 @@ void				ft_free_token(t_token *token_list);
 int					ft_fill_fds(t_mini *tmp);
 int					ft_doc(char *doc);
 void	handle_doc_sigint(int signal);
+
+//builtin
+void env_cmd(t_shell *shell, char **args);
+char **cd_cmd(char **args, char **env);
+void cmd_echo(char **str, t_shell *shell);
+char	**export_cmd(char **env, char **argv);
+void  pwd_cmd(t_shell *shell, char **args);
+char	**unset_cmd(t_shell *shell, char **argv);
+void  exit_cmd(char **str, t_shell *shell);
+
+
+
+
+
+//env_manipulation
+void  print_env(char **env);
+int  count_env(char **env);
+int  get_indice_env(char **env, char *path);
+char *get_content_env(char **env, char *path);
+void  change_content(char **env, int i, char *s1, char *s2);
+int  env_compatible(char *str);
+void        print_err_env(char *str);
+char **unset_var_env(char **env, int index);
+char **realloc_env_var(char **env, int count);
+char **set_env_var(char **env, int index, char *str);
+
+////var_utils
+void  free_double_env(char **str);
+void  free_half(char **str, int i);
+
+
+
+
+//utils
+int ftt_strlen(char *str);
+int  ftt_strncmp(char *s1, char *s2, int n);
+char *ftt_strdup(char *str);
+char *ftt_strjoin(char *s1, char *s2);
+char	*ftt_substr(char *s, unsigned int start, size_t len);
+int  ftt_isalpha(char c);
+int ftt_isalnum(char c);
+int  ftt_isdigit(char c);
+int ftt_isspace(char c);
+char	*ftt_strrchr(char *s, int c);
+char *ftt_strtrim_space(char *str);
+long  ftt_atoi_l(char *str);
+char **ftt_strdup_2(char **str);
+
+  //print
+void  ftt_print_fd(int fd, char *str);
+
+//pipat
+void    execute_builtin(t_shell *shell,t_mini *mini, char **dupli, int status);
+int builtin_fork_status(char **str);
+pid_t   pipe_and_fork(t_shell *shell, t_exe *exe);
+char *solide_path(t_mini *mini, t_exe *exe);
+int pathern(t_exe *exe, t_mini *mini);
+void    executing(t_shell *shell);
+
 #endif

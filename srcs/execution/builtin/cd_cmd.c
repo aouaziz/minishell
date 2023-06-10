@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:11 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 15:37:11 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:22:37 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 void  set_up_pwd_env(char **env, char *ret)
 {
@@ -78,12 +78,12 @@ char **cd_cmd(char **args, char **env)
   return (env);
 }
 
-int main(int ac, char **av, char **env)
-{
-  t_shell *shell;
+// int main(int ac, char **av, char **env)
+// {
+//   t_shell *shell;
   
-  shell->env = env;
+//   shell->env = env;
   
 
-  cd_cmd(shell , av);
-}
+//   cd_cmd(shell , av);
+// }

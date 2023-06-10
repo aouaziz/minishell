@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 09:19:08 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:25:21 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 int  fti_strlen(char *str)
 {
@@ -43,7 +43,7 @@ int  get_flag(char *str)
   return (1);
 }
 
-int  cmd_echo(char **str)
+void  cmd_echo(char **str)
 {
   int i;
   int flag;

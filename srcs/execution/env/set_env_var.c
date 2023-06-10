@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:24:46 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 09:53:53 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 char **set_env_var(char **env, int index,char *str)
 {

@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 10:05:14 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:16:59 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 void  print_unset_error(char *str)
 {

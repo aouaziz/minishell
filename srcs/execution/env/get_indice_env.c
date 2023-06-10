@@ -6,11 +6,11 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:24:34 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 07:24:35 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/mini.h"
+#include "../../../includes/minishell.h"
 
 int  get_indice_env(char **env, char *path)
 {
