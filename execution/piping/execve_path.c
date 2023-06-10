@@ -19,7 +19,7 @@ void    ftt_print_12(char *str, int type)
     if (type == 3)
     {
     ftt_print_fd(2, "is a directory\n");
-        exit(126)
+        exit(126);
     }
     if (type == 1)
     ftt_print_fd(2, "command not found\n");
@@ -39,7 +39,7 @@ char *solide_path(t_mini *mini, t_exe *exe)
     i = 0;
     splited_path = split_path(mini);
     if(!splited_path)
-        return(ftt_print_12(mini, 5));
+        return(ftt_print_12(mini, 5), NULL);
     while (splited_path && splited_path[i])
     {
         path = ftt_strjoin(splited_path[i], "/");
@@ -65,9 +65,9 @@ int pathern(t_exe *exe, t_mini *mini)
         if (dir)
             return (free(dir), ftt_print_12(mini->cmds[0], 3), NULL);
         if (access(mini->cmds[0], F_OK & X_OK) == 0)
-            return(mini->cmd[0]);
+            return(mini->cmds[0]);
         else
-            return(ftt_print_12(mini->cmd[0], 4), NULL);
+            return(ftt_print_12(mini->cmds[0], 4), NULL);
     }
     return (solide_path(mini, exe));
 }

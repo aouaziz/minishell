@@ -6,13 +6,21 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 11:02:11 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 09:21:20 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/mini.h"
 
-int unset_cmd(char **env, char **argv)
+void  print_unset_error(char *str)
+{
+  ftt_print_fd(2, "unset: ");
+  ftt_print_fd(2, str);
+  ftt_print_fd(2, ": not a valid identifier\n");
+  shell->g_status = 1;
+}
+
+char **unset_cmd(char **env, char **argv)
 {
   int i;
   int index;
@@ -22,27 +30,16 @@ int unset_cmd(char **env, char **argv)
     return (0);
   
   while (argv[i])
-  {
+  { 
+    if (!env_compatible(argv[i]))
+      print_unset_error(argv[i]);
     index = get_indice_env(env, argv[i]);
     if (index >= 0)
       env = unset_var_env(env, index);
     i++;
   }
-  if (write(1, "\n", 1) == -1)
-    return (-1);
-  return (0);
+  return (env);
 }
 
 
-int main(int ac, char **av, char **env)
-{
-  char **str;
-
-  str = ftt_strdup_2(env);
-  unset_cmd(str, av);
-  int i = -1;
-  while (str[++i])
-   printf ("--%s---\n", str[i]);
-    return(0);
-}
 

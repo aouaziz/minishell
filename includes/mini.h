@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:25:25 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 10:55:58 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 09:52:38 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int  cd_cmd(char **env, char **args);
 int  cmd_echo(char **str);
 int  export_cmd(char **env, char **argv);
 void  pwd_cmd(char **env, char **args);
-int unset_cmd(char **env, char **argv);
+char **unset_cmd(char **env, char **argv);
 
 
 
@@ -41,7 +41,7 @@ int  env_compatible(char *str);
 void        print_err_env(char *str);
 char **unset_var_env(char **env, int index);
 char **realloc_env_var(char **env, int count);
-void  set_env_var(char **env, int index, char *str);
+char **set_env_var(char **env, int index, char *str);
 
 ////var_utils
 void  free_double_env(char **str);

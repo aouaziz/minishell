@@ -19,27 +19,27 @@ void close_pipes(t_exe *exe)
     i = 0;
     while (i < exe->size - 1)
     {
-        close (pipe[i][0]);
-        close (pipe[i][1]);
+        close (exe->tube[i][0]);
+        close (exe->tube[i][1]);
         i++;
     }
 }
 
-void    check_error_file(t_exe *exe)
+void    check_error_file(t_mini *mini)
 {
-    if (exe->out == -3)
+    if (mini->out == -3)
     {
         ftt_print_fd(2, "minishell: ambigious redirect\n");
         exit(1);
     }
-    if (exe->in == -1 || exe->out == -1)
+    if (mini->in == -1 || mini->out == -1)
     {
         ftt_print_fd(2, "minishell: No such file or directory\n");
         exit (1);
     }
 }
 
-void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
+void    do_pipe_path(t_mini *mini, t_exe *exe, int status, char **env)
 {
     check_error_file(mini);
     if (status && !pathern(exe , mini))
@@ -65,18 +65,18 @@ void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
     close_pipes(exe);
 }
 
-void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
+void    proc_from_in_to_out(t_mini *mini, t_exe *exe, char **env)
 {
     if (builtin_fork_status(mini->cmds) != -1)
     {
-        do_pipe_path(mini, info, 0);
+        do_pipe_path(mini, exe, 0);
         execute_builtin(mini, mini->cmds, mini->index);
         exit(0);
     }
     else
     {
-        do_pipe_path(mini, info, 1);
-        execve(exe->path, mini->cmds, mini->env);
+        do_pipe_path(mini, exe, 1);
+        execve(exe->path, mini->cmds, env);
         perror("error");
         exit(1);
     }
@@ -89,13 +89,13 @@ pid_t   pipe_and_fork(t_shell *shell, t_exe *exe)
 
     i = 0;
     if (exe->size == 1 && !builtin_fork_status(shell->mini->cmds))
-        return (execute_builtin(shell->env, shell->cmd, shell->index), 0);
+        return (execute_builtin(shell->env, shell->mini->cmds, shell->index), 0);
     while (i < exe->size)
     {
         fid = fork;
         if (fid == 0)
         {
-            proc_from_in_to_out(shell->mini, exe);
+            proc_from_in_to_out(shell->mini, exe, shell->env);
         }
         shell->mini = shell->mini->next;
         i++;
