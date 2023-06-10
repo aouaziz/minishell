@@ -37,20 +37,25 @@ int builtin_fork_status(char **str)
     return (-1);
 }
 
-void    execute_builtin(t_shell *shell, char **str, int i)
+void    execute_builtin(t_shell *shell, char **dupli, int status)
 {
-    if (!ftt_strcmp("cd", str[0]))
-        shell->env = cd_cmd(str, shell->env);
-   else if (!ftt_strcmp("pwd", str[0]))
-        pwd_cmd(shell->env, str);
-    else if (!ftt_strcmp("echo", str[0]))
+    char **str;
+
+    str = shell->env;
+    if (status == 2)
+        str = dupli;
+    if (!ftt_strcmp("cd", shell->mini->cmds[0]))
+        shell->env = cd_cmd(shell->mini->cmds, str);
+   else if (!ftt_strcmp("pwd", shell->mini->cmds[0]))
+        pwd_cmd(str, shell->cmds);
+    else if (!ftt_strcmp("echo", shell->mini->cmds[0]))
         echo_cmd(str);
-    else if (!ftt_strcmp("exit", str[0]))
-        exit_cmd(str, i);
-    else if (!ftt_strcmp("env", str[0]))
-        env_cmd(shell->env,str);
-    else if (!ftt_strcmp("unset", str[0]))
-        shell->env = unset_cmd(shell->env, str);
-    else if (!ftt_strcmp("export", str[0]))
-        shell->env = export_cmd(shell->env, str);
+    else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
+        exit_cmd(shell->cmds);
+    else if (!ftt_strcmp("env", shell->mini->cmds[0]))
+        env_cmd(str, shell->cmds);
+    else if (!ftt_strcmp("unset", shell->mini->cmds[0]))
+        shell->env = unset_cmd(str, shell->cmds);
+    else if (!ftt_strcmp("export", shell->mini->cmds[0]))
+        shell->env = export_cmd(str, shell->cmds);
 }

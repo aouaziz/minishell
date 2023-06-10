@@ -39,7 +39,7 @@ void    check_error_file(t_mini *mini)
     }
 }
 
-void    do_pipe_path(t_mini *mini, t_exe *exe, int status, char **env)
+void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
 {
     check_error_file(mini);
     if (status && !pathern(exe , mini))
@@ -70,7 +70,7 @@ void    proc_from_in_to_out(t_mini *mini, t_exe *exe, char **env)
     if (builtin_fork_status(mini->cmds) != -1)
     {
         do_pipe_path(mini, exe, 0);
-        execute_builtin(mini, mini->cmds, mini->index);
+        execute_builtin(mini, mini->cmds, mini->index, 2);
         exit(0);
     }
     else
@@ -86,16 +86,18 @@ pid_t   pipe_and_fork(t_shell *shell, t_exe *exe)
 {
     pid_t fid;
     int i;
+    char **dupli;
 
+    dupli = ftt_strdup_2(shell->env);
     i = 0;
     if (exe->size == 1 && !builtin_fork_status(shell->mini->cmds))
-        return (execute_builtin(shell->env, shell->mini->cmds, shell->index), 0);
+        return (execute_builtin(shell , dupli, 1), 0);
     while (i < exe->size)
     {
         fid = fork;
         if (fid == 0)
         {
-            proc_from_in_to_out(shell->mini, exe, shell->env);
+            proc_from_in_to_out(shell->mini, exe, dupli);
         }
         shell->mini = shell->mini->next;
         i++;

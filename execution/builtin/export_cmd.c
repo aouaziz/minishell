@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 09:51:07 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 10:10:41 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ int main(int ac, char **av, char **env)
   char **str;
   int i = -1;
   str = export_cmd(env, av);
-  while (str[++i])
-    printf ("%s\n", str[i]);
+  //while (str[++i])
+    //printf ("%s\n", str[i]);
 }

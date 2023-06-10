@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:11 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/09 08:06:03 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:37:11 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char  **change_dir(char **env, char *path)
   return (env);
 }
 
-char  **cd_cmd(char **args, char **env)
+char **cd_cmd(char **args, char **env)
 {
   char *path;
   
@@ -80,5 +80,10 @@ char  **cd_cmd(char **args, char **env)
 
 int main(int ac, char **av, char **env)
 {
-  cd_cmd(env , av);
+  t_shell *shell;
+  
+  shell->env = env;
+  
+
+  cd_cmd(shell , av);
 }

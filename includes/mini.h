@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:25:25 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 09:52:38 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:56:39 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 //#define LONG_MAX 2147483647L
 
 //builtin
-int  env_cmd(char **env, char **args);
-int  cd_cmd(char **env, char **args);
-int  cmd_echo(char **str);
-int  export_cmd(char **env, char **argv);
-void  pwd_cmd(char **env, char **args);
-char **unset_cmd(char **env, char **argv);
+void env_cmd(t_shell *shell, char **args);
+void cd_cmd(char **args, t_shell *shell);
+void cmd_echo(char **str, t_shell *shell);
+void  export_cmd(t_shell *shell, char **argv);
+void  pwd_cmd(t_shell *shell, char **args);
+void  unset_cmd(t_shell *shell, char **argv);
+void  exit_cmd(char **str, t_shell *shell);
 
 
 
@@ -67,5 +68,14 @@ char **ftt_strdup_2(char **str);
 
   //print
 void  ftt_print_fd(int fd, char *str);
+
+//pipat
+void    execute_builtin(t_shell *shell, char **dupli, int status);
+int builtin_fork_status(char **str);
+pid_t   pipe_and_fork(t_shell *shell, t_exe *exe);
+char *solide_path(t_mini *mini, t_exe *exe);
+int pathern(t_exe *exe, t_mini *mini);
+void    executing(t_shell *shell);
+
 
 #endif

@@ -12,6 +12,16 @@
 
 #include "../../includes/minishell.h"
 
+void    free_pipes(t_exe *exe)
+{
+    int i;
+
+    i = 0;
+    while (i < exe->size)
+		free(exe->tube[i++]);
+	if (exe->size > 1)
+		free(exe->tube);
+}
 
 void    init_strcut(t_shell *shell, t_exe *exe)
 {
@@ -47,10 +57,23 @@ void    executing(t_shell *shell)
 {
     t_exe exe;
     pid_t fid;
+    int j;
 
     init_strcut(shell, &exe);
     fid = pipe_and_fork(shell, &exe);
     if (fid == -1)
-        ftt_print_fd();
-
+        ftt_print_fd(2, "can't fork\n");
+    if (var->pid == -1)
+		ft_putstr2("fork", "Resource temporarily unavailable\n", 3);
+	close_pipes(exe);
+	waitpid(fid, &j, 0);
+	while (wait(NULL) != -1)
+		;
+	if (fid != -1 && fid != 0)
+	{
+		shell->g_staus = WEXITSTATUS(j);
+		if (WIFSIGNALED(j))
+		    shell->g_staus = WTERMSIG(j) + 128;
+	}
+	free_pipes(exe);
 }

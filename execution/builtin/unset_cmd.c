@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 09:21:20 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 10:05:14 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void  print_unset_error(char *str)
   ftt_print_fd(2, "unset: ");
   ftt_print_fd(2, str);
   ftt_print_fd(2, ": not a valid identifier\n");
-  shell->g_status = 1;
+  //shell->g_status = 1;
 }
 
 char **unset_cmd(char **env, char **argv)
