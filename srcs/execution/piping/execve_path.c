@@ -39,7 +39,7 @@ char *solide_path(t_mini *mini, t_exe *exe)
     i = 0;
     splited_path = split_path(mini);
     if(!splited_path)
-        return(ftt_print_12(mini, 5), NULL);
+        return(ftt_print_12(mini->cmds[0], 5), NULL);
     while (splited_path && splited_path[i])
     {
         path = ftt_strjoin(splited_path[i], "/");

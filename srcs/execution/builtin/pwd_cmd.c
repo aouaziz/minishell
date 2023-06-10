@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 08:17:27 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:16:59 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:47:53 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void  pwd_cmd(char **env, char **args)
   char *pwd;
   
   i = 0;
+  (void)args;
+  pwd = NULL;
   if (get_indice_env(env, "PWD=") != -1)
   {
     pwd = get_content_env(env, "PWD");

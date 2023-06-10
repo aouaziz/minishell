@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:25:21 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:44:07 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int  get_flag(char *str)
   return (1);
 }
 
-void  cmd_echo(char **str)
+void  echo_cmd(char **str)
 {
   int i;
   int flag;
@@ -64,7 +64,6 @@ void  cmd_echo(char **str)
   }
   if (flag == 0)
     ftt_print_fd(1, "\n");
-  return (0);
 }
 
 // int main(int ac, char **av)

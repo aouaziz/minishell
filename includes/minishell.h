@@ -6,14 +6,13 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/10 20:24:38 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:35:08 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include "mini.h"
 # include "../libft/includes/libft.h"
 # include <readline/history.h>
 # include <readline/readline.h>
@@ -133,13 +132,13 @@ int					ft_doc(char *doc);
 void	handle_doc_sigint(int signal);
 
 //builtin
-void env_cmd(t_shell *shell, char **args);
+void env_cmd(char **env, char **args);
 char **cd_cmd(char **args, char **env);
-void cmd_echo(char **str, t_shell *shell);
+void echo_cmd(char **str);
 char	**export_cmd(char **env, char **argv);
-void  pwd_cmd(t_shell *shell, char **args);
-char	**unset_cmd(t_shell *shell, char **argv);
-void  exit_cmd(char **str, t_shell *shell);
+void  pwd_cmd(char **env, char **args);
+char	**unset_cmd(char **env, char **argv);
+void  exit_cmd(char **str);
 
 
 
@@ -178,6 +177,7 @@ char	*ftt_strrchr(char *s, int c);
 char *ftt_strtrim_space(char *str);
 long  ftt_atoi_l(char *str);
 char **ftt_strdup_2(char **str);
+int	ftt_strcmp(char *s1, char *s2);
 
   //print
 void  ftt_print_fd(int fd, char *str);

@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:11 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:22:37 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:43:32 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void  set_up_pwd_env(char **env, char *ret)
   free(ret);
 }
 
-int  hearchi(char **env)
+void  hearchi(char **env)
 {
   char *path;
   int i;
 
+  path = NULL;
   path = getcwd(path, 1000);
   if (!path)
-    return (env);
+    return ;
   if (ftt_strncmp("/", path, 2) == 0)
-    return (env);
+    return ;
   i = ftt_strlen(path);
   while(path[i] != '/')
       i--;
   path = ftt_substr(path , 0, i);
 if (chdir(path) != 0)
-    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path), env);
+    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path));
   set_up_pwd_env(env, path);
-  return (env);
 }
 
 
@@ -44,8 +44,9 @@ char  **change_dir(char **env, char *path)
 {
   char *ret;
   
+  ret = NULL;
   if (chdir(path) != 0)
-    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path), 1);
+    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path), env);
   getcwd(ret , 1000);
   set_up_pwd_env(env, ret);
   return (env);
@@ -72,7 +73,7 @@ char **cd_cmd(char **args, char **env)
     return (change_dir(env, path));
   }
   else if (ftt_strncmp(args[1], "--", 3) == 0)
-    return (hearchi(env));
+    return (hearchi(env), env);
   else
     return(change_dir(env, args[1]));
   return (env);

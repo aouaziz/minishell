@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:23:27 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:46:09 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char  *get_new_env_keys(char *str)
 {
   int i;
-  int start;
   
   i = 0;
   while(str[i] != '=')

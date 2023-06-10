@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:24:46 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/10 20:49:12 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char **set_env_var(char **env, int index,char *str)
   int i;
   char **new_env;
 
+  new_env = NULL;
   i = -1;
   if(index != -1)
   {
