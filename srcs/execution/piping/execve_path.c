@@ -52,7 +52,7 @@ void    ftt_print_12(char *str, int type)
     exit(127);
 }
 
-int solide_path(t_mini *mini, t_exe *exe, t_shell *shell)
+int solide_path(t_mini *mini, t_exe *exe)
 {
     char **splited_path;
     int i;
@@ -73,7 +73,7 @@ int solide_path(t_mini *mini, t_exe *exe, t_shell *shell)
     return (do_free(splited_path), ftt_print_12(mini->cmds[0], 1), 0);
 }
 
-int pathern(t_exe *exe, t_mini *mini, t_shell *shell)
+int pathern(t_exe *exe, t_mini *mini)
 {
     DIR *dir;
     if (mini->cmds[0] && mini->cmds[0][0] == '\0')
@@ -90,5 +90,5 @@ int pathern(t_exe *exe, t_mini *mini, t_shell *shell)
         else
             return(ftt_print_12(mini->cmds[0], 4), 0);
     }
-    return (solide_path(mini, exe, shell));
+    return (solide_path(mini, exe));
 }

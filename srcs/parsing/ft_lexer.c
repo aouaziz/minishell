@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 15:36:36 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 19:59:51 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_add_to_the_lst(char **cmd)
 	fill_index(shell->mini);
 	// print_env_list(shell->env_list,shell->env);
 	// ft_mini_list_print(shell->mini);
-	executing();
 }
 
 void fill_index(t_mini *mini)

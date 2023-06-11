@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 15:37:10 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 18:48:35 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,14 @@ typedef struct s_space
 	int				i;
 }					t_space;
 
+//t_
+
 //exec
 typedef struct s_exe
 {
 	char *path;
 	int **tube;
+	//t_files files;
 	int size;
 }t_exe;
 
@@ -187,10 +190,10 @@ int	ft_lstsize_s(t_mini *lst);
 void  ftt_print_fd(int fd, char *str);
 
 //pipat
-void    execute_builtin(t_shell *shell,t_mini *mini, char **dupli, int status);
+void    execute_builtin(t_mini *mini, char **dupli, int status);
 int builtin_fork_status(char **str);
-pid_t   pipe_and_fork(t_shell *shell, t_exe *exe);
-int pathern(t_exe *exe, t_mini *mini, t_shell *shell);
+pid_t   pipe_and_fork(t_exe *exe);
+int pathern(t_exe *exe, t_mini *mini);
 void    executing(void);
 void close_pipes(t_exe *exe);
 

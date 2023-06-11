@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 15:32:40 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 18:41:50 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_lexer(char *cmd)
 		i++;
 	}
 	ft_add_to_the_lst(cmds);
+	executing ();
 	free(cmd);
 }
 

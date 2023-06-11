@@ -23,7 +23,7 @@ void    free_pipes(t_exe *exe)
 		free(exe->tube);
 }
 
-void    init_strcut(t_shell *shell, t_exe *exe)
+void    init_strcut(t_exe *exe)
 {
     int i;
 
@@ -55,24 +55,32 @@ void    init_strcut(t_shell *shell, t_exe *exe)
 
 void    executing(void)
 {
-    t_exe *exe;
+   t_exe *exe;
     pid_t fid;
     int j;
+    static int o;
 
-    exe = NULL;
-    init_strcut(shell, exe);
-    fid = pipe_and_fork(shell, exe);
+    printf ("----%d----\n", o);
+    o++;
+    //exit(0);
+    exe = malloc (sizeof(t_exe));
+    init_strcut(exe);
+    //ftt_print_fd(2, "hnna\n");
+    //exit (15);
+    fid = pipe_and_fork(exe);
     if (fid == -1)
 		ftt_print_fd(2 ,"minishell :fork :Resource temporarily unavailable\n");
 	close_pipes(exe);
 	waitpid(fid, &j, 0);
+    printf ("..");
 	while (wait(NULL) != -1)
 		;
+    /*
 	if (fid != -1 && fid != 0)
 	{
 		shell->g_status = WEXITSTATUS(j);
 		if (WIFSIGNALED(j))
 		    shell->g_status = WTERMSIG(j) + 128;
 	}
-	free_pipes(exe);
+	free_pipes(exe);*/
 }

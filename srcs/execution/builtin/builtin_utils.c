@@ -22,8 +22,8 @@ int builtin_fork_status(char **str)
         return(0);
     if (!ftt_strcmp("echo", str[0]))
         return(0);
-    if (!ftt_strcmp("exit", str[0]))
-        return(1);
+   /* if (!ftt_strcmp("exit", str[0]))
+        return(1);*/
     if (!ftt_strcmp("env", str[0]))
         return(0);
     if (!ftt_strcmp("unset", str[0]))
@@ -37,7 +37,7 @@ int builtin_fork_status(char **str)
     return (-1);
 }
 
-void    execute_builtin(t_shell *shell, t_mini *mini, char **dupli, int status)
+void    execute_builtin(t_mini *mini, char **dupli, int status)
 {
     char **str;
 
@@ -49,7 +49,7 @@ void    execute_builtin(t_shell *shell, t_mini *mini, char **dupli, int status)
    else if (!ftt_strcmp("pwd", shell->mini->cmds[0]))
         pwd_cmd(str, mini->cmds);
     else if (!ftt_strcmp("echo", shell->mini->cmds[0]))
-        echo_cmd(str);
+        echo_cmd(mini->cmds);
     else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
         exit_cmd(mini->cmds);
     else if (!ftt_strcmp("env", shell->mini->cmds[0]))
