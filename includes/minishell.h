@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/10 20:35:08 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:02:15 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_mini
 	int				in;
 	int				out;
 	struct s_mini	*next;
+	int				index;
 }					t_mini;
 
 typedef struct s_env
@@ -174,10 +175,13 @@ int ftt_isalnum(char c);
 int  ftt_isdigit(char c);
 int ftt_isspace(char c);
 char	*ftt_strrchr(char *s, int c);
+int	ftt_search(char *str, char c);
 char *ftt_strtrim_space(char *str);
 long  ftt_atoi_l(char *str);
 char **ftt_strdup_2(char **str);
 int	ftt_strcmp(char *s1, char *s2);
+int	ft_lstsize_s(t_mini *lst);
+
 
   //print
 void  ftt_print_fd(int fd, char *str);
@@ -186,8 +190,8 @@ void  ftt_print_fd(int fd, char *str);
 void    execute_builtin(t_shell *shell,t_mini *mini, char **dupli, int status);
 int builtin_fork_status(char **str);
 pid_t   pipe_and_fork(t_shell *shell, t_exe *exe);
-char *solide_path(t_mini *mini, t_exe *exe);
-int pathern(t_exe *exe, t_mini *mini);
+int pathern(t_exe *exe, t_mini *mini, t_shell *shell);
 void    executing(t_shell *shell);
+void close_pipes(t_exe *exe);
 
 #endif
