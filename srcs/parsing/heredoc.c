@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/06 07:37:16 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:45 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	handle_doc_sigint(int signal)
 {

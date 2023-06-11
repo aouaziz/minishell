@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/06 07:25:34 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:52:20 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 t_mini	*ft_minilstnew(char **str)
 {
@@ -73,6 +73,7 @@ void	ft_mini_list_print(t_mini *lst)
 {
 	while (lst)
 	{
+		printf("Index:%d\n",lst->index);
 		printf("CMDs:\n");
 		for (int i = 0; lst->cmds[i] != NULL; i++)
 			printf("  %d: %s\n", i, lst->cmds[i]);

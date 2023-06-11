@@ -9,17 +9,17 @@ CC = cc
 
 #FSANITIZE = -fsanitize=address -g
 
-SOURCES =			./srcs/minishell.c \
-					./srcs/ft_lexer.c \
-					./srcs/ft_add_space.c \
-					./srcs/ft_check.c \
-					./srcs/ft_check_two.c \
-					./srcs/ft_lst.c \
-					./srcs/ft_list_two.c \
-					./srcs/ft_env.c \
-					./srcs/expanding.c \
-					./srcs/ft_lst_three.c \
-					./srcs/heredoc.c \
+SOURCES =			./srcs/parsing/minishell.c \
+					./srcs/parsing/ft_lexer.c \
+					./srcs/parsing/ft_add_space.c \
+					./srcs/parsing/ft_check.c \
+					./srcs/parsing/ft_check_two.c \
+					./srcs/parsing/ft_lst.c \
+					./srcs/parsing/ft_list_two.c \
+					./srcs/parsing/ft_env.c \
+					./srcs/parsing/expanding.c \
+					./srcs/parsing/ft_lst_three.c \
+					./srcs/parsing/heredoc.c \
 					./srcs/execution/builtin/builtin_utils.c\
 					./srcs/execution/builtin/cd_cmd.c\
 					./srcs/execution/builtin/echo_cmd.c\
@@ -56,7 +56,9 @@ SOURCES =			./srcs/minishell.c \
 					./srcs/execution/utils/ftt_strchr.c\
 					./srcs/execution/utils/ftt_strjoin.c\
 					./srcs/execution/utils/ftt_strncmp.c\
-					./srcs/execution/utils/ftt_substr.c
+					./srcs/execution/utils/ftt_substr.c \
+					./srcs/execution/utils/ft_lstsize_s.c \
+					./srcs/execution/utils/ftt_search.c \
 
 NC			= \033[0m
 B_RED		= \033[1;31m

@@ -53,7 +53,7 @@ void    init_strcut(t_shell *shell, t_exe *exe)
     }
 }
 
-void    executing(t_shell *shell)
+void    executing(void)
 {
     t_exe *exe;
     pid_t fid;

@@ -6,13 +6,13 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/05 16:11:02 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 15:36:36 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_add_to_the_lst(char **cmd, t_mini *mini)
+void	ft_add_to_the_lst(char **cmd)
 {
 	int		i;
 	t_mini	*tmp;
@@ -26,10 +26,28 @@ void	ft_add_to_the_lst(char **cmd, t_mini *mini)
 		tmp = ft_minilstnew(cmds);
 		if (tmp == NULL)
 			return ;
-		ft_miniadd_back(&mini, tmp);
+		ft_miniadd_back(&shell->mini, tmp);
 		i++;
 	}
-	ft_mini_list_print(mini);
+	fill_index(shell->mini);
+	// print_env_list(shell->env_list,shell->env);
+	// ft_mini_list_print(shell->mini);
+	executing();
+}
+
+void fill_index(t_mini *mini)
+{
+	int i;
+	t_mini *tmp;
+	
+	i = 0;
+	tmp = mini;
+	while (tmp)
+	{
+		tmp->index = i;
+		i++;
+		tmp = tmp->next;
+	}
 }
 
 char	**ft_fix_c_in_qoutes(char **cmds)

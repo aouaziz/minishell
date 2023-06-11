@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/05 10:45:02 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:12 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*get_name(char *line, t_space *l)
 {

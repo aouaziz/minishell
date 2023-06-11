@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 15:02:15 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:37:10 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void				ft_token_list_add_back(t_token **lst, t_token *new);
 t_token				*ft_token_lst_last(t_token *lst);
 void				ft_mini_list_print(t_mini *lst);
 void				ft_miniadd_back(t_mini **list, t_mini *new);
-void				ft_add_to_the_lst(char **cmd, t_mini *mini);
+void				ft_add_to_the_lst(char **cmd);
 char				**ft_fix_c_in_qoutes(char **cmds);
 void				ft_fill_cmds(t_mini *tmp);
 void				ft_lexer(char *cmd);
@@ -130,8 +130,8 @@ void				ft_free_mini(t_mini **mini);
 void				ft_free_token(t_token *token_list);
 int					ft_fill_fds(t_mini *tmp);
 int					ft_doc(char *doc);
-void	handle_doc_sigint(int signal);
-
+void				handle_doc_sigint(int signal);
+void 				fill_index(t_mini *mini);
 //builtin
 void env_cmd(char **env, char **args);
 char **cd_cmd(char **args, char **env);
@@ -191,7 +191,7 @@ void    execute_builtin(t_shell *shell,t_mini *mini, char **dupli, int status);
 int builtin_fork_status(char **str);
 pid_t   pipe_and_fork(t_shell *shell, t_exe *exe);
 int pathern(t_exe *exe, t_mini *mini, t_shell *shell);
-void    executing(t_shell *shell);
+void    executing(void);
 void close_pipes(t_exe *exe);
 
 #endif

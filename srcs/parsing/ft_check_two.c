@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/05 09:42:12 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:22 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	row_check(char *str)
 {

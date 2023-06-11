@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/06 07:27:03 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:38 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_free_token(t_token *token_list)
 {

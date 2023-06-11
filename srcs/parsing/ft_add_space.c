@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:54:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/06 07:20:21 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:19 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_check_operator(t_space *s, char *input)
 {

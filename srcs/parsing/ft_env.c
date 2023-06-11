@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:24:19 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/05 10:41:49 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:27 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_env_lstadd_back(t_env **lst, t_env *new)
 {

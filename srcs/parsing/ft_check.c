@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/05 09:41:52 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:24 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	skip_whitespace(char *str, int i)
 {

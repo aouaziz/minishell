@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/10 15:08:21 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/11 15:32:40 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_lexer(char *cmd)
 {
@@ -28,7 +28,7 @@ void	ft_lexer(char *cmd)
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)156, '|');
 		i++;
 	}
-	ft_add_to_the_lst(cmds, shell->mini);
+	ft_add_to_the_lst(cmds);
 	free(cmd);
 }
 
@@ -51,7 +51,7 @@ int	main(int ac, char *av[], char **env)
 
 	(void)av;
 	shell = malloc(sizeof(t_shell));
-	shell->env = env;
+	shell->env = ftt_strdup_2(env);
 	shell->env_list = fill_env_list(shell->env, shell->env_list);
 	if (ac != 1)
 	{

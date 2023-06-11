@@ -6,11 +6,11 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 09:25:55 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/05/28 04:39:29 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/11 14:32:35 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	ft_miniadd_back(t_mini **list, t_mini *new)
 {
