@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:46:09 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/12 08:58:24 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@ char **export_cmd(char **env, char **argv)
   
   i = 1;
   if (argv[i] == 0)
-    return ((void)env_cmd(env, argv), env);
+    return (ftt_print_fd(1, argv[0]),(void)env_cmd(env, argv), env);
   while(argv[i])
   {
-    printf ("dezet hnna\n");
     if (!env_compatible(argv[i]))
       print_err_env(argv[i]);
     else if(ftt_strrchr(argv[i], '=') != NULL)
     {
       tmp = get_new_env_keys(argv[i]);
       itmp = get_indice_env(env, tmp);
+    printf ("dezet hnna %d\n", itmp);
+    if (itmp >= 0)
       set_env_var(env, itmp, argv[i]);
+    else
+      set_env_var(env, count_env(env), argv[i]);
       free(tmp);
     }
     i++;

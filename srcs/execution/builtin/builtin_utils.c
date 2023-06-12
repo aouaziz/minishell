@@ -41,8 +41,9 @@ void    execute_builtin(t_mini *mini, char **dupli, int status)
 {
     char **str;
 
-    str = shell->env;
-    if (status == 2)
+    if (status == 1)
+        str = shell->env;
+    if(status == 2)
         str = dupli;
     if (!ftt_strcmp("cd", shell->mini->cmds[0]))
         shell->env = cd_cmd(shell->mini->cmds, str);
@@ -50,8 +51,8 @@ void    execute_builtin(t_mini *mini, char **dupli, int status)
         pwd_cmd(str, mini->cmds);
     else if (!ftt_strcmp("echo", shell->mini->cmds[0]))
         echo_cmd(mini->cmds);
-    else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
-        exit_cmd(mini->cmds);
+    //else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
+     //   exit_cmd(mini->cmds);
     else if (!ftt_strcmp("env", shell->mini->cmds[0]))
         env_cmd(str, mini->cmds);
     else if (!ftt_strcmp("unset", shell->mini->cmds[0]))

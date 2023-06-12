@@ -90,7 +90,7 @@ pid_t   pipe_and_fork(t_exe *exe)
 
     dupli = ftt_strdup_2(shell->env);
     i = 0;
-    if (exe->size == 1 && !builtin_fork_status(shell->mini->cmds))
+    if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
         return (execute_builtin(shell->mini, dupli, 1), 0);
     else
     {

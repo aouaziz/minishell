@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:11 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:43:32 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/12 08:13:12 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ char  **change_dir(char **env, char *path)
   
   ret = NULL;
   if (chdir(path) != 0)
-    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path), env);
+    return(ftt_print_fd(2, "cd: no such file or directory:"), ftt_print_fd(2, path), ftt_print_fd(2, "\n"), env);
+  printf ("wsselt hnan\n");
   getcwd(ret , 1000);
   set_up_pwd_env(env, ret);
   return (env);
@@ -55,9 +56,9 @@ char  **change_dir(char **env, char *path)
 char **cd_cmd(char **args, char **env)
 {
   char *path;
-  
-  if (args[2] != 0)
-    return (ftt_print_fd(2, "bash: cd: too many arguments"), env);
+
+   if (args[1] != NULL  && args[2] != NULL)
+    return (ftt_print_fd(2, "bash: cd: too many arguments\n"), env);
   if (!args[1] || !ftt_strncmp(args[1], "--", 3))
   {
     path = get_content_env(env, "HOME=");
@@ -79,12 +80,25 @@ char **cd_cmd(char **args, char **env)
   return (env);
 }
 
-// int main(int ac, char **av, char **env)
-// {
-//   t_shell *shell;
+/*int main(int ac, char **av, char **env)
+{
+  char **str;
+  int i = -1;
+  while (env[++i])
+  {
+    printf("%s\n", env[i]);
+  }
+  char **avv;
+  char **envv;
+  avv = ftt_strdup_2(av);
+  envv = ftt_strdup_2(env);
   
-//   shell->env = env;
-  
-
-//   cd_cmd(shell , av);
-// }
+  str = cd_cmd(avv, envv);
+  exit(1);
+  i = -1;
+  printf ("-----------------------------------\n");
+  while (str[++i])
+  {
+    printf("%s\n", str[i]);
+  }
+}*/

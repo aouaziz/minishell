@@ -58,21 +58,14 @@ void    executing(void)
    t_exe *exe;
     pid_t fid;
     int j;
-    static int o;
 
-    printf ("----%d----\n", o);
-    o++;
-    //exit(0);
     exe = malloc (sizeof(t_exe));
     init_strcut(exe);
-    //ftt_print_fd(2, "hnna\n");
-    //exit (15);
     fid = pipe_and_fork(exe);
     if (fid == -1)
 		ftt_print_fd(2 ,"minishell :fork :Resource temporarily unavailable\n");
 	close_pipes(exe);
 	waitpid(fid, &j, 0);
-    printf ("..");
 	while (wait(NULL) != -1)
 		;
     /*

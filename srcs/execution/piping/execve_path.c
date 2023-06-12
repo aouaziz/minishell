@@ -44,11 +44,11 @@ void    ftt_print_12(char *str, int type)
         exit(126);
     }
     if (type == 1)
-    ftt_print_fd(2, "command not found\n");
+    ftt_print_fd(2, " command not found\n");
     if (type == 2)
-    ftt_print_fd(2, "Permission denied\n");
+    ftt_print_fd(2, " Permission denied\n");
     if (type == 4)
-    ftt_print_fd(2, "No such file or directory\n");
+    ftt_print_fd(2, " No such file or directory\n");
     exit(127);
 }
 
