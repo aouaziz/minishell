@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 19:59:51 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:53:57 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,34 @@ void	ft_add_to_the_lst(char **cmd)
 		ft_miniadd_back(&shell->mini, tmp);
 		i++;
 	}
-	fill_index(shell->mini);
-	// print_env_list(shell->env_list,shell->env);
-	// ft_mini_list_print(shell->mini);
+	fill_index();
+	
+	//print_env_list(shell->env_list,shell->env);
+	ft_mini_list_print(shell->mini);
+	//executing();
 }
 
-void fill_index(t_mini *mini)
+void fill_index(void)
 {
 	int i;
 	t_mini *tmp;
+	t_token *tok;
 	
-	i = 0;
-	tmp = mini;
+	i = 1;
+	tmp = shell->mini;
+	tok = shell->mini->token_list;
 	while (tmp)
 	{
 		tmp->index = i;
 		i++;
 		tmp = tmp->next;
+	}
+	i = 1;
+	while (tok)
+	{
+		tok->index = i;
+		i++;
+		tok = tok->next;
 	}
 }
 

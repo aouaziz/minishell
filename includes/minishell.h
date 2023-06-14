@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/12 08:10:17 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/14 06:34:51 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,11 @@ int					ft_fill_fds(t_mini *tmp);
 int					ft_doc(char *doc);
 void				handle_doc_sigint(int signal);
 void 				fill_index(t_mini *mini);
+void				fill_env_list_add(char *cmd);
+int 				ft_lst_env_size(t_env *lst);
+char				**ft_env_list_to_env(void);
+void				ft_lstdel_env(t_env **list, char *cmd);
+
 //builtin
 void env_cmd(char **env, char **args);
 char **cd_cmd(char **args, char **env);

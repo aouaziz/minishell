@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:52:20 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/13 17:54:35 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_mini_list_print(t_mini *lst)
 		{
 			printf("Token Type: %d\n", token->type);
 			printf("Input File: %s\n", token->file);
+			printf("file index: %d\n",lst->token_list->index);
 		}
 		printf("fd:\n");
 		printf("in:\t %d\n", lst->in);

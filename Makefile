@@ -20,6 +20,7 @@ SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/parsing/expanding.c \
 					./srcs/parsing/ft_lst_three.c \
 					./srcs/parsing/heredoc.c \
+					./srcs/parsing/ft_help.c \
 					./srcs/execution/builtin/builtin_utils.c\
 					./srcs/execution/builtin/cd_cmd.c\
 					./srcs/execution/builtin/echo_cmd.c\
