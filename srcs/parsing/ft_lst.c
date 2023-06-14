@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/13 17:54:35 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/14 16:02:39 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ t_mini	*ft_minilstnew(char **str)
 		i++;
 	}
 	ft_fill_cmds(new);
-	if (ft_fill_fds(new))
-		return (NULL);
 	return (new);
 }
 

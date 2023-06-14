@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/14 15:37:02 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/14 16:36:59 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_env
 	char			*env_value;
 	struct s_env	*next;
 }					t_env;
+
 
 typedef struct s_shell
 {
@@ -131,7 +132,7 @@ void				ft_free_env(t_env **head);
 void				ft_free_cmd(t_list *a);
 void				ft_free_mini(t_mini **mini);
 void				ft_free_token(t_token *token_list);
-int					ft_fill_fds(t_mini *tmp);
+int					ft_fill_fds(void);
 int					ft_doc(char *doc);
 void				handle_doc_sigint(int signal);
 void 				fill_index(void);
@@ -140,7 +141,6 @@ int 				ft_lst_env_size(t_env *lst);
 char				**ft_env_list_to_env(void);
 void				ft_lstdel_env(t_env **list, char *cmd);
 int					ft_env_change_value(char *name , char *value);
-
 
 
 
