@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 02:56:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/14 06:29:37 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:37:58 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@ void	fill_env_list_add(char *cmd)
 	ft_env_lstadd_back(&shell->env_list, tmp);
 	i++;
 }
+int	ft_env_change_value(char *name , char *value)
+{
+	t_env *tmp;
+
+	tmp = shell->env_list;
+
+	while(tmp)
+	{
+		if(!ft_strcmp(tmp->env_name,name))
+			{
+				tmp->env_value = value;
+				return(0);
+			}
+		tmp = tmp->next;
+	}
+	return(1);
+}
 
 char **ft_env_list_to_env(void)
 {
@@ -48,7 +65,7 @@ char **ft_env_list_to_env(void)
     env = malloc((env_size + 1) * sizeof(char *));
 	if (!env)
 		return NULL;
-	env[env_size] == NULL;
+	env[env_size] = NULL;
 	while (tmp)
 	{
 		env_size = (ft_strlen(tmp->env_name) + ft_strlen(tmp->env_value) + 2);

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/14 06:34:51 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/14 15:37:02 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_token
 {
 	int				type;
 	char			*file;
+	int 			index;
 	struct s_token	*next;
 }					t_token;
 
@@ -84,8 +85,7 @@ typedef struct s_exe
 	int size;
 }t_exe;
 
-//
-
+//parsing
 char				*ft_replace_c_with_s_in_quotes(char *line, char c, char s);
 char				*add_spaces(char *input);
 int					skip_whitespace(char *str, int i);
@@ -134,11 +134,15 @@ void				ft_free_token(t_token *token_list);
 int					ft_fill_fds(t_mini *tmp);
 int					ft_doc(char *doc);
 void				handle_doc_sigint(int signal);
-void 				fill_index(t_mini *mini);
+void 				fill_index(void);
 void				fill_env_list_add(char *cmd);
 int 				ft_lst_env_size(t_env *lst);
 char				**ft_env_list_to_env(void);
 void				ft_lstdel_env(t_env **list, char *cmd);
+int					ft_env_change_value(char *name , char *value);
+
+
+
 
 //builtin
 void env_cmd(char **env, char **args);
