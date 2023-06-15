@@ -53,28 +53,32 @@ void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
     }
     else
     {
-        if (mini->in > 0)
+        if (mini->in >= 0)
             dup2(mini->in , 0);
         else if (mini->in < 0 && mini->index > 0)
             dup2(exe->tube[mini->index - 1][0], 0);
-        if (mini->out > 0)
+        if (mini->out >= 0)
             dup2(mini->out, 1);
-        else if (mini->out && mini->index < exe->size - 1)
+        else if (mini->out < 0 && mini->index < exe->size - 1)
             dup2(exe->tube[mini->index][1], 1);
+        close_pipes(exe);
     }
-    close_pipes(exe);
+    
 }
 
-void    proc_from_in_to_out(t_mini *mini, t_exe *exe, char **env)
+void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
 {
+    char **env;
+
     if (builtin_fork_status(mini->cmds) != -1)
     {
         do_pipe_path(mini, exe, 0);
-        execute_builtin(mini, env, 2);
+        execute_builtin(mini);
         exit(0);
     }
     else
     {
+        env = ft_env_list_to_env();
         do_pipe_path(mini, exe, 1);
         execve(exe->path, mini->cmds, env);
         perror("error");
@@ -86,12 +90,10 @@ pid_t   pipe_and_fork(t_exe *exe)
 {
     pid_t fid;
     int i;
-    char **dupli;
-
-    dupli = ftt_strdup_2(shell->env);
+   
     i = 0;
     if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
-        return (execute_builtin(shell->mini, dupli, 1), 0);
+        return (execute_builtin(shell->mini), 0);
     else
     {
         while (i < exe->size)
@@ -99,7 +101,7 @@ pid_t   pipe_and_fork(t_exe *exe)
             fid = fork();
             if (fid == 0)
             {
-                proc_from_in_to_out(shell->mini, exe, dupli);
+                proc_from_in_to_out(shell->mini, exe);
             }
             shell->mini = shell->mini->next;
             i++;

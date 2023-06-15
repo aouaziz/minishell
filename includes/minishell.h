@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/14 16:36:59 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/15 15:25:49 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_shell
 	int				g_status;
 	t_env			*env_list;
 	char			**env;
+	int				size;
 }					t_shell;
 
 t_shell				*shell;
@@ -141,16 +142,17 @@ int 				ft_lst_env_size(t_env *lst);
 char				**ft_env_list_to_env(void);
 void				ft_lstdel_env(t_env **list, char *cmd);
 int					ft_env_change_value(char *name , char *value);
+char				*ft_get_value(char *name);
 
 
 
 //builtin
-void env_cmd(char **env, char **args);
-char **cd_cmd(char **args, char **env);
+void env_cmd(char **args);
+void cd_cmd(char **args);
 void echo_cmd(char **str);
-char	**export_cmd(char **env, char **argv);
-void  pwd_cmd(char **env, char **args);
-char	**unset_cmd(char **env, char **argv);
+void	export_cmd(char **argv);
+void  pwd_cmd(void);
+void	unset_cmd(char **argv);
 void  exit_cmd(char **str);
 
 
@@ -199,7 +201,7 @@ int	ft_lstsize_s(t_mini *lst);
 void  ftt_print_fd(int fd, char *str);
 
 //pipat
-void    execute_builtin(t_mini *mini, char **dupli, int status);
+void    execute_builtin(t_mini *mini);
 int builtin_fork_status(char **str);
 pid_t   pipe_and_fork(t_exe *exe);
 int pathern(t_exe *exe, t_mini *mini);
@@ -207,3 +209,4 @@ void    executing(void);
 void close_pipes(t_exe *exe);
 
 #endif
+//tat3tiha name tatred lik value

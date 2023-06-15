@@ -6,7 +6,7 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:44:07 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/14 20:20:53 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int  get_flag(char *str)
   j = 0;
   if (fti_strlen(str) < 2)
     return (0);
-  if (str[j] != '-' && str[1] != 'n')
+  if (str[j] != '-' || str[1] != 'n')
     return (0);
   j++;
   while (str[j])
@@ -40,7 +40,9 @@ int  get_flag(char *str)
         return (0);
     j++;
   }
+  if (str[j] == 0)
   return (1);
+  return(1);
 }
 
 void  echo_cmd(char **str)
@@ -64,8 +66,8 @@ void  echo_cmd(char **str)
   }
   if (flag == 0)
     ftt_print_fd(1, "\n");
+  shell->g_status = 0;
 }
-
 // int main(int ac, char **av)
 // {
 //   cmd_echo(av);

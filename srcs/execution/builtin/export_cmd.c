@@ -6,56 +6,107 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/12 08:58:24 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:31:15 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-char  *get_new_env_keys(char *str)
+int check_element_validity(char *str)
 {
   int i;
-  
+
   i = 0;
-  while(str[i] != '=')
-    i++;
-  return (ftt_substr(str, 0, i + 1));
+  while (str[i] != '=' && str[i] != '+' && str[i])
+    if (ftt_isalnum(str[i]) || str[i] == '_')
+      i++;
+  if (str[i] == '+' && str[i + 1] == '=')
+    return (1);
+  else if (str[i] == '=')
+    return (2);
+  shell->g_status = 1;
+  return (-1);
 }
 
-char **export_cmd(char **env, char **argv)
+char *gett_key(char *str)
 {
   int i;
-  char *tmp;
-  int itmp;
+
+  i = 0;
+  while (str[i] != '=' && str[i] != '+' && str[i])
+    if (ftt_isalnum(str[i]) || str[i] == '_')
+      i++;
+  return (ftt_substr(str, 0, i));
+}
+
+int element_exist(char *str)
+{
+  t_env *tmp;
+
+  tmp = shell ->env_list;
+  while (tmp)
+  {
+    if (ft_strcmp(tmp->env_name, str) == 0)
+      return (1);
+    tmp = tmp->next; 
+  }
+  return (0);
+}
+
+char *jib_value(char *str)
+{
+  int i;
+  int len;
+
+  i = 0;
+  len = ftt_strlen(str);
+  while (str[i] != '=' && str[i] != '+' && str[i])
+    if (ftt_isalnum(str[i]) || str[i] == '_')
+      i++;
+  if (str[i] == '+' && str[i + 1] == '=')
+    i += 2;
+  else if (str[i] == '=')
+    i++;
+  return (ftt_substr(str, i, len - i + 1));  
+}
+
+void  export_element(char *str, int status)
+{
+  int exist;
+  char *name;
+  char  *value;
+  
+  name = gett_key(str);
+  value = jib_value(str);
+  exist = element_exist(name);
+  if (exist == 0)
+  {
+    fill_env_list_add(str);
+  }
+  else if (exist == 1 && status == 2)
+    ft_env_change_value(name, value);
+  else if (exist == 1 && status == 3)
+  {
+    value = ftt_strjoin(ft_get_value(name) ,value);
+   ft_env_change_value(name, value);
+  }
+  shell->g_status = 0;
+}
+void  export_cmd(char **args)
+{
+  int i;
+  int l;
   
   i = 1;
-  if (argv[i] == 0)
-    return (ftt_print_fd(1, argv[0]),(void)env_cmd(env, argv), env);
-  while(argv[i])
+  if (!args[1])
+    env_cmd(args);
+  while (args[i])
   {
-    if (!env_compatible(argv[i]))
-      print_err_env(argv[i]);
-    else if(ftt_strrchr(argv[i], '=') != NULL)
-    {
-      tmp = get_new_env_keys(argv[i]);
-      itmp = get_indice_env(env, tmp);
-    printf ("dezet hnna %d\n", itmp);
-    if (itmp >= 0)
-      set_env_var(env, itmp, argv[i]);
+    l = check_element_validity(args[i]);
+    if (l > -1)
+      export_element(args[i], l);
     else
-      set_env_var(env, count_env(env), argv[i]);
-      free(tmp);
-    }
+      printf ("bash: export: '%s': not a valid identifier \n", args[i]);
     i++;
   }
-  return (env);
 }
-
-// int main(int ac, char **av, char **env)
-// {
-//   char **str;
-//   int i = -1;
-//   str = export_cmd(env, av);
-//   //while (str[++i])
-//     //printf ("%s\n", str[i]);
-// }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:32:38 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/15 21:13:10 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,4 @@ void	ft_fill_cmds(t_mini *tmp)
 		i++;
 		curr = curr->next;
 	}
-}
-
-void	ft_free_env(t_env **head)
-{
-	t_env	*current;
-	t_env	*next;
-
-	current = *head;
-	next = NULL;
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current->env_name);  // Free env_name
-		free(current->env_value); // Free env_value
-		free(current);            // Free the current element
-		current = next;
-	}
-	*head = NULL;
 }

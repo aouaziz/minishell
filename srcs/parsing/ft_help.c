@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_help.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 02:56:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/14 15:37:58 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/15 16:01:07 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,32 @@ int ft_lst_env_size(t_env *lst)
 	return count;
 }
 
+char	*ft_get_value(char *name)
+{
+	t_env *tmp;
+
+	tmp = shell->env_list;
+
+	while(tmp)
+	{
+		if(!ft_strcmp(tmp->env_name,name))
+				return(tmp->env_value);
+		tmp = tmp->next;
+	}
+	return(NULL);
+}
+
 void	ft_lstdel_env(t_env **list, char *cmd)
 {
 	t_env	*current;
 	t_env	*previous;
-	char *name;
 	t_env	*tmp;
 
 	current = *list;
-	name = ft_get_env_name(cmd);
-    printf("%s\n",name);
 	previous = NULL;
 	while (current != NULL)
 	{
-		if (!ft_strcmp(current->env_name , name))
+		if (!ft_strcmp(current->env_name , cmd))
 		{
 			tmp = current;
 			if (previous != NULL)

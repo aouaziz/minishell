@@ -17,10 +17,14 @@ void    free_pipes(t_exe *exe)
     int i;
 
     i = 0;
+    (void) exe;
+    if (exe->size > 1)
+    {
     while (i < exe->size)
 		free(exe->tube[i++]);
 	if (exe->size > 1)
 		free(exe->tube);
+    }
 }
 
 void    init_strcut(t_exe *exe)
@@ -28,7 +32,7 @@ void    init_strcut(t_exe *exe)
     int i;
 
     i = 0;
-    exe->size = ft_lstsize_s(shell->mini);//check that
+    exe->size = ft_lstsize_s(shell->mini);
 
     if (exe->size > 1)
     {
@@ -68,12 +72,11 @@ void    executing(void)
 	waitpid(fid, &j, 0);
 	while (wait(NULL) != -1)
 		;
-    /*
 	if (fid != -1 && fid != 0)
 	{
 		shell->g_status = WEXITSTATUS(j);
 		if (WIFSIGNALED(j))
 		    shell->g_status = WTERMSIG(j) + 128;
 	}
-	free_pipes(exe);*/
+	free_pipes(exe);
 }

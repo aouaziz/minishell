@@ -6,39 +6,24 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 08:17:27 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:47:53 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/14 21:41:00 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-void  pwd_cmd(char **env, char **args)
+void  pwd_cmd(void)
 {
-  int i;
-  char *pwd;
-  
-  i = 0;
-  (void)args;
-  pwd = NULL;
-  if (get_indice_env(env, "PWD=") != -1)
+  char tmp[1000];
+
+  if (getcwd(tmp, sizeof(tmp)) == NULL)
+      perror("error :");
+  else
   {
-    pwd = get_content_env(env, "PWD");
-    while (pwd[i] != '=')
-      i++;
-    i++;
-    if (!pwd[i])
-    { 
-      if (getcwd(pwd, 1000) != 0)
-        ftt_print_fd(1, pwd);
-    }
-    else
-      while(pwd[i])
-        {
-          write(1, &pwd[i], 1);
-          i++;
-        }
-    write(1, "\n", 1);
+    ftt_print_fd(1, tmp);
+    ftt_print_fd(1, "\n");
   }
+  shell->g_status = 0;
 }
 
 // int main(int ac, char **av, char **env)
