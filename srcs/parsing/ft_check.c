@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:32:24 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 07:39:28 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_brackets(char *str)
 			count = skip_whitespace(str, count + 1);
 			if (str[count] == '<' || str[count] == '>' || str[count] == '|')
 			{
-				printf("Error: bracket syntax error detected.\n");
+				printf("minishell: bracket syntax error detected.\n");
 				shell->g_status = 258;
 				return (1);
 			}
@@ -63,19 +63,30 @@ char	ft_riplice(char c, int a)
 
 int	ft_check(char *line)
 {
+	
 	if (!ft_strlen(line))
+	{
+		shell->g_status = 127;
 		return (1);
+	}
+	else if(ft_strlen(line) == 2 && (!ft_strcmp(line ,"\"\"") || !ft_strcmp(line ,"''")))
+	{
+		shell->g_status = 127;
+		printf("minishell: command not found.\n");
+		return (1);
+	}
 	else if (row_check(line))
 		return (1);
 	else if (check_brackets(line))
 		return (1);
 	else if (check_quotes(line))
 		return (1);
-	else if (check_pipe(line))
-		return (1);
+	 else if (check_pipe(line))
+		 return (1);
 	else if (ft_strlen(line) == 1)
 	{
 		shell->g_status = 127;
+		printf("minishell: command not found.\n");
 		return (1);
 	}
 	return (0);
@@ -96,7 +107,7 @@ int	check_pipe(char *str)
 				pipe_found = 1;
 			else if (pipe_found)
 			{
-				printf("Error: pipe syntax error detected.\n");
+				printf("minishell: pipe syntax error detected.\n");
 				shell->g_status = 258;
 				return (1);
 			}

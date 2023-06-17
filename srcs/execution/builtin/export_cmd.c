@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/15 15:31:15 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 07:23:40 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void  export_cmd(char **args)
     if (l > -1)
       export_element(args[i], l);
     else
-      printf ("bash: export: '%s': not a valid identifier \n", args[i]);
+      printf ("minishell: export: '%s': not a valid identifier \n", args[i]);
     i++;
   }
 }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:32:22 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 07:08:38 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	row_check(char *str)
 	len = ft_strlen(str);
 	if (str[0] == '|' || str[len - 1] == '|')
 	{
-		printf("Error: pipe syntax error detected.\n");
+		printf("minishell: pipe syntax error detected.\n");
 		shell->g_status = 258;
 		return (1);
 	}
 	else if (str[len - 1] == '>' || str[len - 1] == '<')
 	{
-		printf("Error: bracket syntax error detected.\n");
+		printf("minishell: bracket syntax error detected.\n");
 		shell->g_status = 258;
 		return (1);
 	}
@@ -56,7 +56,7 @@ int	check_quotes(char *str)
 	}
 	if (l.output_len % 2 != 0 || l.input_len % 2 != 0)
 	{
-		printf("Error: unclosed quotes detected .\n ");
+		printf("minishell: unclosed quotes detected .\n ");
 		shell->g_status = 258;
 		return (1);
 	}
@@ -95,21 +95,3 @@ void	ft_free_mini(t_mini **mini)
 		(*mini) = tmp;
 	}
 }
-
-// void	ft_free_env(t_env **head)
-// {
-// 	t_env	*current;
-// 	t_env	*next;
-
-// 	current = *head;
-// 	next = NULL;
-// 	while (current != NULL)
-// 	{
-// 		next = current->next;
-// 		free(current->env_name);  // Free env_name
-// 		free(current->env_value); // Free env_value
-// 		free(current);            // Free the current element
-// 		current = next;
-// 	}
-// 	*head = NULL;
-// }

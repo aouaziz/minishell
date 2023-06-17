@@ -36,11 +36,11 @@ char    **split_path(char **env)
 
 void    ftt_print_12(char *str, int type)
 {
-    ftt_print_fd(2, "minishell: ");
+    ftt_print_fd(2, "Minishell: ");
     ftt_print_fd(2, str);
     if (type == 3)
     {
-    ftt_print_fd(2, "is a directory\n");
+    ftt_print_fd(2, " is a directory\n");
         exit(126);
     }
     if (type == 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_help.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 02:56:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/15 16:01:07 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 07:25:34 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	*ft_get_value(char *name)
 	return(NULL);
 }
 
-void	ft_lstdel_env(t_env **list, char *cmd)
+int	ft_lstdel_env(t_env **list, char *cmd)
 {
 	t_env	*current;
 	t_env	*previous;
@@ -128,6 +128,7 @@ void	ft_lstdel_env(t_env **list, char *cmd)
 			free(tmp->env_name);
 			free(tmp->env_value);
 		    free(tmp);
+			return (0);
 		}
 		else
 		{
@@ -135,4 +136,5 @@ void	ft_lstdel_env(t_env **list, char *cmd)
 			current = current->next;
 		}
 	}
+	return (1);
 }

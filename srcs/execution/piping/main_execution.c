@@ -20,7 +20,7 @@ void    free_pipes(t_exe *exe)
     (void) exe;
     if (exe->size > 1)
     {
-    while (i < exe->size)
+    while (i < exe->size - 1)
 		free(exe->tube[i++]);
 	if (exe->size > 1)
 		free(exe->tube);
@@ -48,7 +48,7 @@ void    init_strcut(t_exe *exe)
             i++;
         }
         i = 0;
-        while (i < exe->size)
+        while (i < exe->size - 1)
         {
             if (pipe(exe->tube[i]) == -1)
                 return (ftt_print_fd(2, "pipe pb\n"),exit (1));

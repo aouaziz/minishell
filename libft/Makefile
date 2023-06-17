@@ -69,7 +69,7 @@ all: $(NAME)
 %.o: %.c
 #	@echo "$(B_GREEN)Compiling: $(GREEN)$(notdir $<) 🔨$(NC)"
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(GREEN)█\033[0m\c"
+#	@echo "$(GREEN)█\033[0m\c"
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)

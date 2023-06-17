@@ -78,8 +78,8 @@ void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
     }
     else
     {
-        env = ft_env_list_to_env();
         do_pipe_path(mini, exe, 1);
+        env = ft_env_list_to_env();
         execve(exe->path, mini->cmds, env);
         perror("error");
         exit(1);
@@ -92,8 +92,8 @@ pid_t   pipe_and_fork(t_exe *exe)
     int i;
    
     i = 0;
-    if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
-        return (execute_builtin(shell->mini), 0);
+   if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
+       return (execute_builtin(shell->mini), 0);
     else
     {
         while (i < exe->size)

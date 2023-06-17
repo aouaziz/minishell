@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/15 15:40:27 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 06:45:50 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	ft_add_to_the_lst(char **cmd)
 		i++;
 	}
 	fill_index();
-	if (ft_fill_fds())
-		return ;
+	ft_fill_fds();
 	shell->size = ft_lstsize_s(shell->mini);
 	//print_env_list(shell->env_list,shell->env);
 	//ft_mini_list_print(shell->mini);
@@ -70,7 +69,7 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	while (cmds[i])
 	{
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)155, ' ');
-		if (i > 0 && ft_strcmp(cmds[i - 1], "<<"))
+		if ((i > 0 && ft_strcmp(cmds[i - 1], "<<" )) || cmds[1] == NULL)
 		{
 			cmds[i] = ft_fix_env(cmds[i]);
 			cmds[i] = remove_quotes(cmds[i]);

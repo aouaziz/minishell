@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/15 15:25:49 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 07:26:50 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,9 @@ void 				fill_index(void);
 void				fill_env_list_add(char *cmd);
 int 				ft_lst_env_size(t_env *lst);
 char				**ft_env_list_to_env(void);
-void				ft_lstdel_env(t_env **list, char *cmd);
+int				ft_lstdel_env(t_env **list, char *cmd);
 int					ft_env_change_value(char *name , char *value);
 char				*ft_get_value(char *name);
-
 
 
 //builtin
@@ -207,6 +206,8 @@ pid_t   pipe_and_fork(t_exe *exe);
 int pathern(t_exe *exe, t_mini *mini);
 void    executing(void);
 void close_pipes(t_exe *exe);
+void  export_element(char *str, int status);
+int check_element_validity(char *str);
 
 #endif
 //tat3tiha name tatred lik value

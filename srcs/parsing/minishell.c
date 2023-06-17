@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/15 20:23:25 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 07:49:33 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_lexer(char *cmd)
 		i++;
 	}
 	ft_add_to_the_lst(cmds);
-	free(cmd);
 }
 
 void	handle_sigint(int sig)
@@ -71,5 +70,7 @@ int	main(int ac, char *av[], char **env)
 		add_history(line);
 		if (!ft_check(line))
 			ft_lexer(line);
+		//free(line);
 	}
 }
+//'$'

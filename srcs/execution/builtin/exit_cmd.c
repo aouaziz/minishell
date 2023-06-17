@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:02 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/14 21:39:12 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 07:23:40 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void  exit_cmd(char **str)
   }
   if (str[1] != NULL && str[2] != NULL && ret != 1)
   {
-    printf ("bash: exit: too many arguments\n");
+    printf ("minishell: exit: too many arguments\n");
     shell->g_status = 1;
   }
   if (ret == 1)
-    printf ("bash: exit: %s:numeric argument required\n", str[1]);
+    printf ("minishell: exit: %s:numeric argument required\n", str[1]);
   exit(shell->g_status);
 }
