@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 09:31:00 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 09:54:16 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ft_lexer(char *cmd)
 	shell->mini = NULL;
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '|', (char)156);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, ' ', (char)155);
+	cmd = ft_replace_c_with_s_in_quotes(cmd, '>', (char)157);
+	cmd = ft_replace_c_with_s_in_quotes(cmd, '<', (char)158);
 	cmd = add_spaces(cmd);
 	cmds = ft_split(cmd, '|');
 	while (cmds[i])

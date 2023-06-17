@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 06:45:50 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 09:59:27 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,20 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 		i++;
 	}
 	return (cmds);
+}
+char	*ft_replace_c_with_s(char *line, char c, char s)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+	
+		if (line[i] == c)
+			line[i] = s;
+		i++;
+	}
+	return (line);
 }
 
 char	*ft_replace_c_with_s_in_quotes(char *line, char c, char s)

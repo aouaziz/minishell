@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 07:26:50 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 10:00:02 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ char				**ft_env_list_to_env(void);
 int				ft_lstdel_env(t_env **list, char *cmd);
 int					ft_env_change_value(char *name , char *value);
 char				*ft_get_value(char *name);
+char	*ft_replace_c_with_s(char *line, char c, char s);
 
 
 //builtin

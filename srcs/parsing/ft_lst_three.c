@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/15 21:13:10 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 09:59:46 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ft_fill_cmds(t_mini *tmp)
 	curr = tmp->cmd_list;
 	while (curr)
 	{
+		curr->content  = ft_replace_c_with_s(curr->content, (char)157, '>');
+		curr->content  = ft_replace_c_with_s(curr->content, (char)158, '<');
 		tmp->cmds[i] = curr->content;
 		i++;
 		curr = curr->next;
