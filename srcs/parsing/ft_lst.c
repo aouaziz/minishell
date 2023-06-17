@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 09:52:14 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 10:37:09 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ t_mini	*ft_minilstnew(char **str)
 	ft_lst_fix(new);
 	while (str[l.i])
 	{
-		printf("str[%d]: %s\n", l.i, str[l.i]);
-		if (ft_strcmp(str[l.i], ">") == 0)
+		if (ft_strncmp(str[l.i], ">",1) == 0)
 			new->token_list = add_token_to_list(new->token_list, OUT, str[++l.i]);
-		else if (ft_strcmp(str[l.i], "<") == 0)
+		else if (ft_strncmp(str[l.i], "<",1) == 0)
 			new->token_list = add_token_to_list(new->token_list, IN, str[++l.i]);
-		else if (ft_strcmp(str[l.i], ">>") == 0)
+		else if (ft_strncmp(str[l.i], ">>",2) == 0)
 			new->token_list = add_token_to_list(new->token_list, APD, str[++l.i]);
-		else if (ft_strcmp(str[l.i], "<<") == 0)
+		else if (ft_strncmp(str[l.i], "<<",2) == 0)
 			new->token_list = add_token_to_list(new->token_list, DOC, str[++l.i]);
 		else
 			new->cmd_list = add_cmd_to_list(new->cmd_list, str[l.i]);

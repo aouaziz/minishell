@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 09:59:27 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 10:41:18 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	while (cmds[i])
 	{
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)155, ' ');
-		if ((i > 0 && ft_strcmp(cmds[i - 1], "<<" )) || cmds[1] == NULL)
+		if ((i > 0 && ft_strncmp(cmds[i - 1], "<<" ,2)) || cmds[1] == NULL)
 		{
 			cmds[i] = ft_fix_env(cmds[i]);
 			cmds[i] = remove_quotes(cmds[i]);
