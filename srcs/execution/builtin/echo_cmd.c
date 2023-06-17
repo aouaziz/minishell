@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/14 20:20:53 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/17 09:20:12 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int  get_flag(char *str)
     j++;
   }
   if (str[j] == 0)
-  return (1);
+    return (1);
   return(1);
 }
 
@@ -59,8 +59,7 @@ void  echo_cmd(char **str)
     }
   while(str[i])
   {
-    if (str[i][0] != '0')
-      ftt_print_fd(1, str[i]);
+    ftt_print_fd(1, str[i]);
     ftt_print_fd(1, " ");
     i++;
   }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 07:49:33 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 09:31:00 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char *av[], char **env)
 	}
 	while (1)
 	{
-		line = readline("Minishell$ ");
+		line = readline("minishell$ ");
 		if (!line)
 		{
 			printf("exit\n");

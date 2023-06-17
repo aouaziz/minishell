@@ -58,9 +58,9 @@ int solide_path(t_mini *mini, t_exe *exe)
     int i;
 
     i = 0;
-    splited_path = split_path(shell->env);
+    splited_path = split_path(ft_env_list_to_env());
     if(!splited_path)
-        return(ftt_print_12(mini->cmds[0], 5), 0);
+        return(ftt_print_12(mini->cmds[0], 4), 0);
     while (splited_path && splited_path[i])
     {
         exe->path = ftt_strjoin(splited_path[i], "/");
@@ -78,7 +78,7 @@ int pathern(t_exe *exe, t_mini *mini)
     DIR *dir;
     if (mini->cmds[0] && mini->cmds[0][0] == '\0')
         return (ftt_print_12(mini->cmds[0], 1), 0);
-    if (!shell->env)
+    if (!shell->env_list)
         return (ftt_print_12(mini->cmds[0], 2), 0);
     if (ftt_search(mini->cmds[0], '/') == 0)
     {

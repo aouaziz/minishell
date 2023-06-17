@@ -68,7 +68,6 @@ void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
 
 void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
 {
-    char **env;
 
     if (builtin_fork_status(mini->cmds) != -1)
     {
@@ -79,8 +78,7 @@ void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
     else
     {
         do_pipe_path(mini, exe, 1);
-        env = ft_env_list_to_env();
-        execve(exe->path, mini->cmds, env);
+        execve(exe->path, mini->cmds, ft_env_list_to_env());
         perror("error");
         exit(1);
     }
