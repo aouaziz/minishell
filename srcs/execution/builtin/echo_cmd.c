@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/17 09:20:12 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 05:36:05 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void  echo_cmd(char **str)
   while(str[i])
   {
     ftt_print_fd(1, str[i]);
+      if (str[i + 1])
     ftt_print_fd(1, " ");
     i++;
   }

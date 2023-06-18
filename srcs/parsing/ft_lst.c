@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 10:37:09 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 05:25:57 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ t_mini	*ft_minilstnew(char **str)
 	ft_lst_fix(new);
 	while (str[l.i])
 	{
-		if (ft_strncmp(str[l.i], ">",1) == 0)
+		if (!ft_strncmp(str[l.i], ">>",2))
+			new->token_list = add_token_to_list(new->token_list, APD, str[++l.i]);
+		else if (ft_strncmp(str[l.i], ">",1) == 0)
 			new->token_list = add_token_to_list(new->token_list, OUT, str[++l.i]);
 		else if (ft_strncmp(str[l.i], "<",1) == 0)
 			new->token_list = add_token_to_list(new->token_list, IN, str[++l.i]);
-		else if (ft_strncmp(str[l.i], ">>",2) == 0)
-			new->token_list = add_token_to_list(new->token_list, APD, str[++l.i]);
 		else if (ft_strncmp(str[l.i], "<<",2) == 0)
 			new->token_list = add_token_to_list(new->token_list, DOC, str[++l.i]);
 		else

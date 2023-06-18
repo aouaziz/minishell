@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 01:32:23 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 06:03:47 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int	ft_fill_fds(void)
 			else if (curr->type == OUT)
 				tmp->out = open(curr->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 			else if (curr->type == APD)
+			{
 				tmp->out = open(curr->file, O_CREAT | O_RDWR | O_APPEND , 0644);
+				printf("out = %d\n", tmp->out);
+			}
 			if (tmp->out < 0 || tmp->in < 0)
 			{
 				shell->g_status = 1;
@@ -87,11 +90,10 @@ int	ft_fill_fds(void)
 			}
 			curr = curr->next;
 		}
-		if (tmp->out == 1 && tmp->next)
+		if (tmp->out == 1 )
 			tmp->out = -20;
-		if (tmp->in == 0 && tmp->index > 0)
+		if (tmp->in == 0 )
 			tmp->in = -20;
-
 		tmp = tmp->next;
 	}
 	return (0);
