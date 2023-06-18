@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 07:36:24 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 09:06:42 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	handle_sigint(int sig);
 void	cat_handle_sigint(int sig);
 int her_doc(char *lim, int expander);
 void	ft_open_fd(t_mini *tmp, t_token *curr);
-
+int is_empty();
 
 //builtin
 void env_cmd(char **args);

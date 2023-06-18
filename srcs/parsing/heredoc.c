@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 07:49:02 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 09:48:38 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@ void	handle_doc_sigint(int signal)
 
 void	ft_doc(void)
 {
-	t_space	line;
+	int expander;
 	t_mini	*mini;
 	
 	mini = shell->mini;
-	printf("type %d \n",mini->token_list->type);
+	expander = 0;
 	while (mini)
 	{
 		while (mini->token_list)
 		{
 			if (mini->token_list->type == DOC)
 			{
-				if (ft_strchr(mini->token_list->file, '$')
-					&& (!ft_strchr(mini->token_list->file, '\'')
-							|| !ft_strchr(mini->token_list->file, '"')))
-					line.output_len = 1;
+				if (ft_strchr(mini->token_list->file , '\'') || ft_strchr(mini->token_list->file , '\"'))
+					expander = 1;
 				mini->token_list->file = remove_quotes(mini->token_list->file);
-				mini->in = her_doc(mini->token_list->file, line.output_len);
+				mini->in = her_doc(mini->token_list->file, expander);
 				mini->doc = mini->token_list->index;
 			}
 			mini->token_list = mini->token_list->next;
@@ -56,17 +54,19 @@ int	her_doc(char *lim, int expander)
 	if (fid == 0)
 	{
 		signal(SIGINT, handle_doc_sigint);
+		signal(SIGQUIT, handle_doc_sigint);
 		while (1)
 		{
-			line = readline("heredoc>");
+			line = readline(">");
 			if (!ft_strncmp(lim, line, ft_strlen(line)))
 			{
 				free(line);
 				break ;
 			}
-			if (expander == 1)
+			if (expander == 0)
 				line = ft_fix_env(line);
 			ft_putstr_fd(line,tab[1]);
+			ft_putstr_fd("\n",tab[1]);
 			free(line);
 		}
 		exit(0);
@@ -82,7 +82,7 @@ void	ft_open_fd(t_mini *tmp, t_token *curr)
 	if (curr->type == IN)
 	{
 		tmp->in = open(curr->file, O_RDONLY);
-		if(tmp->doc < curr->index && file > 0)
+		if(tmp->doc < curr->index && file > 0 && tmp->in > 0)
 			tmp->in = file;
 	}
 	else if (curr->type == OUT)
@@ -115,9 +115,7 @@ int	ft_fill_fds(void)
 {
 	t_token *curr;
 	t_mini *tmp;
-
-	// if(is_empty())
-		//   ft_doc();
+	
 	tmp = shell->mini;
 	while (tmp)
 	{
