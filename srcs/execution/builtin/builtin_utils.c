@@ -39,6 +39,18 @@ int builtin_fork_status(char **str)
 
 void    execute_builtin(t_mini *mini)
 {
+    int fdin;
+    int fdout;
+
+    fdin = dup(0);
+    fdout = dup(1);
+    if (shell->size == 1)
+    {
+        if (mini->in > 0)
+            dup2(mini->in, 0);
+        if (mini->out > 1)
+           dup2(mini->out, 1);
+    }
     if (!ftt_strcmp("cd", shell->mini->cmds[0]))
         cd_cmd(shell->mini->cmds);
    else if (!ftt_strcmp("pwd", shell->mini->cmds[0]))
@@ -53,4 +65,9 @@ void    execute_builtin(t_mini *mini)
         unset_cmd(mini->cmds);
     else if (!ftt_strcmp("export", shell->mini->cmds[0]))
         export_cmd(mini->cmds);
+    if (shell->size ==1 )
+    {
+    dup2(fdin, 0);
+    dup2(fdout, 1);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 02:09:09 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 07:36:24 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void				ft_free_cmd(t_list *a);
 void				ft_free_mini(t_mini **mini);
 void				ft_free_token(t_token *token_list);
 int					ft_fill_fds(void);
-int					ft_doc(char *doc);
+void	ft_doc(void);
 void				handle_doc_sigint(int signal);
 void 				fill_index(void);
 void				fill_env_list_add(char *cmd);
@@ -150,6 +150,8 @@ void                        rl_replace_line(const char *text, int clear_undo);
 int her_doc(char *lim, int expander);
 void	handle_sigint(int sig);
 void	cat_handle_sigint(int sig);
+int her_doc(char *lim, int expander);
+void	ft_open_fd(t_mini *tmp, t_token *curr);
 
 
 //builtin

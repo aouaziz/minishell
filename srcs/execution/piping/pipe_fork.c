@@ -63,7 +63,6 @@ void    do_pipe_path(t_mini *mini, t_exe *exe, int status)
             dup2(exe->tube[mini->index][1], 1);
         close_pipes(exe);
     }
-    
 }
 
 void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
