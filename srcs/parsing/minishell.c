@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 09:54:16 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 02:06:44 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ void	handle_sigint(int sig)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		//rl_replace_line("",0);
+		rl_replace_line("",1);
 		rl_redisplay();
 	}
-	else
-		return ;
 }
 
 int	main(int ac, char *av[], char **env)
@@ -59,6 +57,8 @@ int	main(int ac, char *av[], char **env)
 		printf("wrong argument");
 		return (0);
 	}
+	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, handle_sigint);
 	while (1)
 	{
 		line = readline("minishell$ ");
@@ -67,12 +67,8 @@ int	main(int ac, char *av[], char **env)
 			printf("exit\n");
 			exit(0);
 		}
-		signal(SIGINT, handle_sigint);
-		signal(SIGQUIT, handle_sigint);
 		add_history(line);
 		if (!ft_check(line))
 			ft_lexer(line);
-		//free(line);
 	}
 }
-//'$'

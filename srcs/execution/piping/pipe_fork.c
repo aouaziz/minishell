@@ -84,12 +84,25 @@ void    proc_from_in_to_out(t_mini *mini, t_exe *exe)
     }
 }
 
+void	cat_handle_sigint(int sig)
+{
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		rl_on_new_line();
+		rl_replace_line("",1);
+	//	rl_redisplay();
+	}
+}
+
 pid_t   pipe_and_fork(t_exe *exe)
 {
     pid_t fid;
     int i;
    
     i = 0;
+    signal(SIGINT, cat_handle_sigint);
+    signal(SIGQUIT, cat_handle_sigint);
    if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
        return (execute_builtin(shell->mini), 0);
     else
@@ -100,6 +113,7 @@ pid_t   pipe_and_fork(t_exe *exe)
             if (fid == 0)
             {
                 proc_from_in_to_out(shell->mini, exe);
+                exit(0);
             }
             shell->mini = shell->mini->next;
             i++;

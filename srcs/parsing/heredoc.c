@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 06:35:15 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/18 01:32:23 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,50 @@
 
 // void	handle_doc_sigint(int signal)
 // {
-// 	(void)signal;
-// 	exit(1);
+	// (void)signal;
+	// exit(1);
 // }
-
+// 
 // int	ft_doc(t_mini *file)
 // {
 	// t_space	line;
 // 
-	// signal(SIGINT, handle_doc_sigint);
-	// line.i = open("/tmp/minishell", O_CREAT | O_RDWR | O_TRUNC, 0644);
-	// if (line.i < 0)
-	// {
-		// printf("Minishell: There's a problem with the file or directory %s\n", file->token_list->file);
-		// return (0);
-	// }
 	// if (ft_strchr(file->token_list->file, '$')
 		// && (!ft_strchr(file->token_list->file, '\'')
 				// || !ft_strchr(file->token_list->file, '"')))
 		// line.output_len = 1;
 	// file->token_list->file = remove_quotes(file->token_list->file);
-	// while (1)
-	// {
-		// line.input = readline("heredoc> ");
-		// if (ft_strncmp(line.input, file->token_list->file, ft_strlen(doc)))
-			// break ;
-		// if (line.output_len)
-			// line.input = ft_fix_env(line.input);
-		// write(line.i, line.input, ft_strlen(line.input));
-		// write(line.i, "\n", 1);
-		// free(line.input);
-	// }
-	// free(line.input);
+	// file->doc = her_doc(file->token_list->file, line.output_len);
 	// return (line.i);
+// }
+// 
+// int her_doc(char *lim, int expander)
+// {
+    // int tab[2];
+    // char *line;
+    // pid_t fid;
+// 
+    // pipe(tab);
+    // fid = fork();
+    // if (fid == 0)
+    // {
+		// signal(SIGINT, handle_doc_sigint);
+        // while(1)
+        // {
+            // line = readline(">");
+            // if (!ft_strncmp(lim, line , ft_strlen(line)))
+            // {
+                // free(line);
+                // break ;
+            // }
+            // ftt_putstr_fd(tab[1], line);
+            // free(line);
+        // }
+        // exit (0);
+    // }
+    // wait(0);
+    // close(tab[1]);
+    // return(tab[0]);
 // }
 
 int	ft_fill_fds(void)

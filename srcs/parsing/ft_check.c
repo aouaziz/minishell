@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/17 07:39:28 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/17 20:48:32 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_check(char *line)
 	else if (ft_strlen(line) == 1)
 	{
 		shell->g_status = 127;
-		printf("minishell: command not found.\n");
+		printf("minishell: command not found:%s\n",line);
 		return (1);
 	}
 	return (0);
