@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 03:28:11 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 07:31:13 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,10 @@ int					check_brackets(char *str);
 int					check_quotes(char *str);
 int					ft_check(char *line);
 int					check_pipe(char *str);
-int					row_check(char *str);
+int					row_check(char *src);
 t_mini				*ft_minilstnew(char **content);
 t_list				*add_cmd_to_list(t_list *cmd_list, char *cmd);
-t_token				*add_token_to_list(t_token *token, int type,
-						char *content);
+t_token				*add_token_to_list(t_token *token, int type, char *content);
 void				ft_token_list_add_back(t_token **lst, t_token *new);
 t_token				*ft_token_lst_last(t_token *lst);
 void				ft_mini_list_print(t_mini *lst);
@@ -150,7 +149,6 @@ int					her_doc(char *lim, int expander);
 void				ft_open_fd(t_mini *tmp, t_token *curr);
 int					is_empty(void);
 void				ft_cmd_not_found(void);
-
 //builtin
 void				env_cmd(char **args);
 void				cd_cmd(char **args);
@@ -159,6 +157,13 @@ void				export_cmd(char **argv);
 void				pwd_cmd(void);
 void				unset_cmd(char **argv);
 void				exit_cmd(char **str);
+char				*ft_get_name(char *str);
+char				*ft_get_va_lue(char *str);
+int					ft_exist(char *str);
+void				do_status(int exist, int l, char *str);
+int					valid_arg(char *str);
+void				fill_env_list_add_back(char *name, char *value);
+void				change_status_export(int status, char *name);
 
 //env_manipulation
 void				print_env(char **env);

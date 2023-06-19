@@ -6,15 +6,15 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:33 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:13:18 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int ftt_isalnum(char c)
+int	ftt_isalnum(char c)
 {
-  if (ftt_isalpha(c) || ftt_isdigit(c))
-    return (1);
-  return (0);
+	if (ftt_isalpha(c) || ftt_isdigit(c))
+		return (1);
+	return (0);
 }

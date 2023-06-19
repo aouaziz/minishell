@@ -6,20 +6,20 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:58:48 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:14:43 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int ftt_strlen(char *str)
+int	ftt_strlen(char *str)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  if (!str)
-    return (0);
-  while (str[i])
-    i++;
-  return (i);
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }

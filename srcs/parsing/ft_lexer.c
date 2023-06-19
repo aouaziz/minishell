@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 04:31:29 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 07:34:41 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	ft_add_to_the_lst(char **cmd)
 		if (tmp == NULL)
 			return ;
 		ft_miniadd_back(&g_shell->mini, tmp);
-		//free_double_env(cmds);
 		i++;
 	}
 	fill_index();
@@ -39,6 +38,7 @@ void	ft_add_to_the_lst(char **cmd)
 		return ;
 	ft_mini_list_print(g_shell->mini);
 	//executing();
+	free_double_env(cmds);
 }
 
 void	fill_index(void)

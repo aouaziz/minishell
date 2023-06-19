@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize_s.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 14:59:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/14 21:22:08 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/19 06:40:57 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,16 @@ int	ft_lstsize_s(t_mini *lst)
 		i++;
 	}
 	return (i);
+}
+
+void	free_double_env(char **str)
+{
+	int	i;
+
+	i = -1;
+	if (!str)
+		return ;
+	while (str[++i])
+		free(str[i]);
+	free(str);
 }

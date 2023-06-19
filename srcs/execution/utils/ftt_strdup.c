@@ -6,28 +6,28 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:58:42 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:14:30 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-char *ftt_strdup(char *str)
+char	*ftt_strdup(char *str)
 {
-  int i;
-  int len;
-  char *dup;
-  
-  i = 0;
-  len = ftt_strlen(str);
-  dup = (char *)malloc(sizeof(char) * len + 1);
-  if (!dup)
-    return (NULL);
-  while (str[i])
-  {
-    dup[i] = str[i];
-    i++;
-  }
-  dup[i] = '\0';
-  return (dup);
+	int		i;
+	int		len;
+	char	*dup;
+
+	i = 0;
+	len = ftt_strlen(str);
+	dup = (char *)malloc(sizeof(char) * len + 1);
+	if (!dup)
+		return (NULL);
+	while (str[i])
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 01:08:44 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 07:33:52 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 int	row_check(char *str)
 {
 	int	len;
-
-	str = ft_strtrim(str, " ");
-	str = ft_strtrim(str, "\t");
+	char *tmp;
+	tmp = ft_strtrim(str, "\t ");
 	len = ft_strlen(str);
-	if (str[0] == '|' || str[len - 1] == '|')
+	if (tmp[0] == '|' || tmp[len - 1] == '|')
 	{
 		printf("minishell: pipe syntax error detected.\n");
 		g_shell->g_status = 258;
+		free(str);
+		free(tmp);
 		return (1);
 	}
-	else if (str[len - 1] == '>' || str[len - 1] == '<')
+	else if (tmp[len - 1] == '>' || tmp[len - 1] == '<')
 	{
 		printf("minishell: bracket syntax error detected.\n");
 		g_shell->g_status = 258;
+		free(str);
+		free(tmp);
 		return (1);
 	}
+	free(tmp);
 	return (0);
 }
 

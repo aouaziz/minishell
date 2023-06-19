@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ll_copie.c                                      :+:      :+:    :+:   */
+/*   get_content_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/17 16:34:59 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/17 16:37:27 by mel-garr         ###   ########.fr       */
+/*   Created: 2023/06/18 08:41:03 by mel-garr          #+#    #+#             */
+/*   Updated: 2023/06/18 08:41:34 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../../includes/minishell.h"
 
-t_env *ftt_ll_copie(void)
+int	get_indice_env(char **env, char *path)
 {
-    t_env *tmp;
+	int	i;
+	int	len;
 
-    
+	i = 0;
+	len = ftt_strlen(path);
+	while (env[i])
+	{
+		if (ftt_strncmp(env[i], path, len) == 0)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+char	*get_content_env(char **env, char *path)
+{
+	return (env[get_indice_env(env, path)]);
 }

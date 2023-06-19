@@ -6,24 +6,24 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:58:51 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:30:11 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:14:50 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int  ftt_strncmp(char *s1, char *s2, int n)
+int	ftt_strncmp(char *s1, char *s2, int n)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
-    i++;
-  if (s1[i] == 0 && s2[i] == 0)
-    return (0);
-  if (i == n)
-    return (0);
-  return (1);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
+		i++;
+	if (s1[i] == 0 && s2[i] == 0)
+		return (0);
+	if (i == n)
+		return (0);
+	return (1);
 }
 
 int	ftt_strcmp(char *s1, char *s2)

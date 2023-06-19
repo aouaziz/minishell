@@ -6,42 +6,42 @@
 /*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 09:24:50 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/10 20:18:42 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/18 10:13:11 by mel-garr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/minishell.h"
 
-int doubl_str_len(char **str)
+int	doubl_str_len(char **str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!str)
-        return(0);
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char **ftt_strdup_2(char **str)
+char	**ftt_strdup_2(char **str)
 {
-    int len;
-    char **ret;
-    int i;
+	int		len;
+	char	**ret;
+	int		i;
 
-    i = 0;
-    if (!str)
-        return (NULL);
-    len = doubl_str_len(str);
-    ret = (char **)malloc(sizeof(char *) * (len + 1));
-    if (!ret)
-        return (ftt_print_fd(2, "dup_an_env\n"), NULL);
-    while (str[i])
-    {
-        ret[i] = ftt_strdup(str[i]);
-        i++;
-    }
-    ret[i] = NULL;
-    return (ret);
+	i = 0;
+	if (!str)
+		return (NULL);
+	len = doubl_str_len(str);
+	ret = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!ret)
+		return (ftt_print_fd(2, "dup_an_env\n"), NULL);
+	while (str[i])
+	{
+		ret[i] = ftt_strdup(str[i]);
+		i++;
+	}
+	ret[i] = NULL;
+	return (ret);
 }

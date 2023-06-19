@@ -30,18 +30,6 @@ SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/execution/builtin/export_cmd.c\
 					./srcs/execution/builtin/pwd_cmd.c\
 					./srcs/execution/builtin/unset_cmd.c\
-					./srcs/execution/env/change_content.c\
-					./srcs/execution/env/count_env.c\
-					./srcs/execution/env/env_compatible.c\
-					./srcs/execution/env/export_var_env.c\
-					./srcs/execution/env/get_content_env.c\
-					./srcs/execution/env/get_indice_env.c\
-					./srcs/execution/env/print_env.c\
-					./srcs/execution/env/print_err_env.c\
-					./srcs/execution/env/realloc_var_env.c\
-					./srcs/execution/env/set_env_var.c\
-					./srcs/execution/env/unset_var_env.c\
-					./srcs/execution/env/utils_env.c\
 					./srcs/execution/piping/execve_path.c\
 					./srcs/execution/piping/main_execution.c\
 					./srcs/execution/piping/pipe_fork.c\
@@ -61,6 +49,9 @@ SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/execution/utils/ftt_substr.c \
 					./srcs/execution/utils/ft_lstsize_s.c \
 					./srcs/execution/utils/ftt_search.c \
+					./srcs/execution/builtin/export_cmd2.c \
+					./srcs/execution/builtin/export_cmd3.c \
+					./srcs/execution/utils/get_content_env.c \
 
 NC			= \033[0m
 B_RED		= \033[1;31m
