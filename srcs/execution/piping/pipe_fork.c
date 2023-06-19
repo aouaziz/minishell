@@ -89,8 +89,8 @@ void	cat_handle_sigint(int sig)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		//rl_replace_line("",1);
-	//	rl_redisplay();
+		rl_replace_line("",1);
+		rl_redisplay();
 	}
 }
 
@@ -100,21 +100,23 @@ pid_t   pipe_and_fork(t_exe *exe)
     int i;
    
     i = 0;
-    signal(SIGINT, cat_handle_sigint);
-    signal(SIGQUIT, cat_handle_sigint);
-   if (exe->size == 1 && builtin_fork_status(shell->mini->cmds) != -1)
-       return (execute_builtin(shell->mini), 0);
+   
+   signal(SIGINT, SIG_IGN);
+   if (exe->size == 1 && builtin_fork_status(g_shell->mini->cmds) != -1)
+       return (execute_builtin(g_shell->mini), 0);
     else
     {
         while (i < exe->size)
         {
-            fid = fork();
+            fid = fork(); 
             if (fid == 0)
-            {
-                proc_from_in_to_out(shell->mini, exe);
+            { 
+                signal(SIGQUIT, cat_handle_sigint);
+                signal(SIGINT, cat_handle_sigint);
+                proc_from_in_to_out(g_shell->mini, exe);
                 exit(0);
             }
-            shell->mini = shell->mini->next;
+            g_shell->mini = g_shell->mini->next;
             i++;
         }
     }

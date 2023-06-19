@@ -78,7 +78,7 @@ int pathern(t_exe *exe, t_mini *mini)
     DIR *dir;
     if (mini->cmds[0] && mini->cmds[0][0] == '\0')
         return (ftt_print_12(mini->cmds[0], 1), 0);
-    if (!shell->env_list)
+    if (!g_shell->env_list)
         return (ftt_print_12(mini->cmds[0], 2), 0);
     if (ftt_search(mini->cmds[0], '/') == 0)
     {

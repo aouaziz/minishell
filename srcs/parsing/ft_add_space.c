@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:54:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:32:19 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 04:37:34 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_check_operator(t_space *s, char *input)
 		s->c = '<';
 	else if (input[s->i] == '>' && input[s->i + 1] == '>')
 		s->c = '>';
-	if (s->i -1 > 0 && input[s->i - 1] != ' ')
+	if (s->i - 1 > 0 && input[s->i - 1] != ' ')
 		s->output[s->output_len++] = ' ';
 	s->output[s->output_len++] = s->c;
 	s->output[s->output_len++] = s->c;
@@ -41,29 +41,70 @@ void	ft_check_operator_two(t_space *s, char *input)
 
 char	*add_spaces(char *input)
 {
-	t_space	s;
 	char	*operators;
 
 	operators = "<>|";
-	s.c = '\0';
-	s.output = malloc(sizeof(char *) * ft_strlen(input) + 1);
-	s.input_len = ft_strlen(input);
-	s.output_len = 0;
-	s.i = 0;
-	while (s.i < s.input_len)
+	g_shell->l.c = '\0';
+	g_shell->l.output = malloc(sizeof(char *) * ft_strlen(input) + 1);
+	g_shell->l.input_len = ft_strlen(input);
+	g_shell->l.output_len = 0;
+	g_shell->l.i = 0;
+	while (g_shell->l.i < g_shell->l.input_len)
 	{
-		if ((input[s.i] == '>' && input[s.i + 1] == '>') || (input[s.i] == '<'
-				&& input[(s.i) + 1] == '<'))
-			ft_check_operator(&s, input);
-		else if (ft_strchr(operators, input[s.i]))
-			ft_check_operator_two(&s, input);
+		if ((input[g_shell->l.i] == '>' && input[g_shell->l.i + 1] == '>')
+			|| (input[g_shell->l.i] == '<' && input[(g_shell->l.i)
+					+ 1] == '<'))
+			ft_check_operator(&g_shell->l, input);
+		else if (ft_strchr(operators, input[g_shell->l.i]))
+			ft_check_operator_two(&g_shell->l, input);
 		else
 		{
-			s.output[s.output_len++] = input[s.i];
-			s.i++;
+			g_shell->l.output[g_shell->l.output_len++] = input[g_shell->l.i];
+			g_shell->l.i++;
 		}
 	}
 	free(input);
-	s.output[s.output_len] = '\0';
-	return (s.output);
+	g_shell->l.output[g_shell->l.output_len] = '\0';
+	return (g_shell->l.output);
+}
+
+void	remove_quotes_two(t_space *l, char c, int i)
+{
+	if (i == 1)
+	{
+		l->input_len = i;
+		l->c = c;
+	}
+	else
+	{
+		l->input_len = i;
+		l->c = '\0';
+	}
+}
+
+char	*remove_quotes(char *str)
+{
+	t_space	l;
+
+	l.input_len = 0;
+	l.c = '\0';
+	l.i = -1;
+	l.output_len = 0;
+	if (!str)
+		return (NULL);
+	l.output = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!l.output)
+		return (NULL);
+	while (str[++l.i])
+	{
+		if ((str[l.i] == '"' || str[l.i] == '\'') && !l.input_len)
+			remove_quotes_two(&l, str[l.i], 1);
+		else if (str[l.i] == l.c && l.input_len)
+			remove_quotes_two(&l, str[l.i], 0);
+		else
+			l.output[l.output_len++] = str[l.i];
+	}
+	free(str);
+	l.output[l.output_len] = '\0';
+	return (l.output);
 }

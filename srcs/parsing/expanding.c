@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/13 14:04:15 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 03:30:00 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_name(char *line, t_space *l)
 	l->output_len = l->i;
 	l->input_len = 0;
 	if (line[l->i] == '?' && ft_strlen(line) == 2)
-		return (ft_itoa(shell->g_status));
+		return (ft_itoa(g_shell->g_status));
 	while (ft_isalnum(line[l->output_len]))
 	{
 		l->input_len++;
@@ -68,7 +68,7 @@ char	*get_value(char *name)
 	char	*unprintable;
 	t_env	*env;
 
-	env = shell->env_list;
+	env = g_shell->env_list;
 	if (*name > '1' && *name <= '9')
 	{
 		name++;
@@ -92,27 +92,28 @@ char	*get_value(char *name)
 
 char	*ft_fix_env(char *line)
 {
-	t_space	l;
-
-	l.input = malloc(1);
-	l.input[0] = '\0';
-	l.i = -1;
-	while (line[++l.i])
+	g_shell->l.input = malloc(1);
+	g_shell->l.input[0] = '\0';
+	g_shell->l.i = -1;
+	while (line[++g_shell->l.i])
 	{
-		env_fix_c(line, &l);
-		if (line[l.i] == '$' && line[l.i + 1] == '$')
+		env_fix_c(line, &g_shell->l);
+		if (line[g_shell->l.i] == '$' && line[g_shell->l.i + 1] == '$')
 		{
-			l.input = ft_charjoin(l.input, line[l.i]);
-			l.i = l.i + 2;
+			g_shell->l.input = ft_charjoin(g_shell->l.input,
+					line[g_shell->l.i]);
+			g_shell->l.i = g_shell->l.i + 2;
 		}
-		if (line[l.i] == '$' && l.c != '\'')
+		if (line[g_shell->l.i] == '$' && g_shell->l.c != '\'')
 		{
-			l.output = get_name(line, &l);
-			l.input = ft_strjoin(l.input, l.output);
+			g_shell->l.output = get_name(line, &g_shell->l);
+			g_shell->l.input = ft_strjoin(g_shell->l.input,
+					g_shell->l.output);
 		}
 		else
-			l.input = ft_charjoin(l.input, line[l.i]);
+			g_shell->l.input = ft_charjoin(g_shell->l.input,
+					line[g_shell->l.i]);
 	}
 	free(line);
-	return (l.input);
+	return (g_shell->l.input);
 }

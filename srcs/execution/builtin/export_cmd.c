@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:29:30 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/18 01:56:14 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 00:47:37 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	fill_env_list_add_back(char *name, char *value)
 	t_env	*tmp;
 	
   tmp = ft_env_lst_new(name, value);
-	ft_env_lstadd_back(&shell->env_list, tmp);
+	ft_env_lstadd_back(&g_shell->env_list, tmp);
 }
 
 int ft_exist(char *str)
 {
   t_env *tmp;
 
-  tmp = shell->env_list;
+  tmp = g_shell->env_list;
   while (tmp)
   {
     if (ft_strcmp(tmp->env_name, str) == 0)
@@ -63,7 +63,7 @@ int ft_exist(char *str)
 void  change_status_export(int status, char *name)
 {
   t_env *tmp;
-  tmp = shell->env_list;
+  tmp = g_shell->env_list;
   while (tmp)
   {
     if (ft_strcmp(name, tmp->env_name) == 0)
@@ -141,11 +141,11 @@ void	ppprint_env_list(void)
 {
     t_env *tmp;
     
-    tmp = shell->env_list;
+    tmp = g_shell->env_list;
     while (tmp)
     {
       if (tmp->status == 0)
-        printf("declare -x %s=\"%s\" %d\n", tmp->env_name, tmp->env_value, tmp->status);
+        printf("declare -x %s=\"%s\" \n", tmp->env_name, tmp->env_value);
       else if (tmp->status == -1)
         printf ("declare -x %s\n", tmp->env_name);
       tmp = tmp->next;
@@ -159,7 +159,7 @@ void  env_export_cmd(void)
   char *tmp_name;
   char *tmp_value;
     
-  tmp = shell->env_list;
+  tmp = g_shell->env_list;
   while (tmp)
   {
     n_head = tmp->next;

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:02 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/17 07:23:40 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 00:47:37 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ void  exit_cmd(char **str)
   int ret ;
   
   ret = 0;
-  if (shell->size == 1)
+  if (g_shell->size == 1)
     printf("exit\n");
   if(!str[1])
-    exit(shell->g_status);
+    exit(g_shell->g_status);
   if (str[1])
   {
     ret = get_ret_status(str[1]);
     if (ret == 1)
-      shell->g_status = ft_atoi(str[1]);
+      g_shell->g_status = ft_atoi(str[1]);
   }
   if (str[1] != NULL && str[2] != NULL && ret != 1)
   {
     printf ("minishell: exit: too many arguments\n");
-    shell->g_status = 1;
+    g_shell->g_status = 1;
   }
   if (ret == 1)
     printf ("minishell: exit: %s:numeric argument required\n", str[1]);
-  exit(shell->g_status);
+  exit(g_shell->g_status);
 }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 09:07:14 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 04:31:29 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ void	ft_add_to_the_lst(char **cmd)
 		tmp = ft_minilstnew(cmds);
 		if (tmp == NULL)
 			return ;
-		ft_miniadd_back(&shell->mini, tmp);
+		ft_miniadd_back(&g_shell->mini, tmp);
+		//free_double_env(cmds);
 		i++;
 	}
 	fill_index();
 	ft_fill_fds();
-	if(is_empty())
+	if (is_empty())
 		ft_doc();
-	shell->size = ft_lstsize_s(shell->mini);
-	//print_env_list(shell->env_list,shell->env);
-	//ft_mini_list_print(shell->mini);
-	if(shell->size == 1 && !shell->mini->cmd_list)
-		return;
-	executing();
+	g_shell->size = ft_lstsize_s(g_shell->mini);
+	if (g_shell->size == 1 && !g_shell->mini->cmd_list)
+		return ;
+	ft_mini_list_print(g_shell->mini);
+	//executing();
 }
 
-void fill_index(void)
+void	fill_index(void)
 {
-	int i;
-	t_mini *tmp;
-	t_token *tok;
-	
+	int		i;
+	t_mini	*tmp;
+	t_token	*tok;
+
 	i = 0;
-	tmp = shell->mini;
-	tok = shell->mini->token_list;
+	tmp = g_shell->mini;
+	tok = g_shell->mini->token;
 	while (tmp)
 	{
 		tmp->index = i;
@@ -73,7 +73,7 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	while (cmds[i])
 	{
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)155, ' ');
-		if ((i > 0 && ft_strncmp(cmds[i - 1], "<<" ,2)) || cmds[1] == NULL)
+		if ((i > 0 && ft_strncmp(cmds[i - 1], "<<", 2)) || cmds[1] == NULL)
 		{
 			cmds[i] = ft_fix_env(cmds[i]);
 			cmds[i] = remove_quotes(cmds[i]);
@@ -82,14 +82,14 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	}
 	return (cmds);
 }
+
 char	*ft_replace_c_with_s(char *line, char c, char s)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-	
 		if (line[i] == c)
 			line[i] = s;
 		i++;
@@ -123,45 +123,4 @@ char	*ft_replace_c_with_s_in_quotes(char *line, char c, char s)
 		i++;
 	}
 	return (line);
-}
-
-void	remove_quotes_two(t_space *l, char c, int i)
-{
-	if (i == 1)
-	{
-		l->input_len = i;
-		l->c = c;
-	}
-	else
-	{
-		l->input_len = i;
-		l->c = '\0';
-	}
-}
-
-char	*remove_quotes(char *str)
-{
-	t_space	l;
-
-	l.input_len = 0;
-	l.c = '\0';
-	l.i = -1;
-	l.output_len = 0;
-	if (!str)
-		return (NULL);
-	l.output = malloc((ft_strlen(str) + 1) * sizeof(char));
-	if (!l.output)
-		return (NULL);
-	while (str[++l.i])
-	{
-		if ((str[l.i] == '"' || str[l.i] == '\'') && !l.input_len)
-			remove_quotes_two(&l, str[l.i], 1);
-		else if (str[l.i] == l.c && l.input_len)
-			remove_quotes_two(&l, str[l.i], 0);
-		else
-			l.output[l.output_len++] = str[l.i];
-	}
-	free(str);
-	l.output[l.output_len] = '\0';
-	return (l.output);
 }

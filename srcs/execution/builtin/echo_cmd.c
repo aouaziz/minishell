@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:08 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/18 07:02:39 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/19 00:47:37 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void  echo_cmd(char **str)
   }
   if (flag == 0)
     ftt_print_fd(1, "\n");
-  shell->g_status = 0;
+  g_shell->g_status = 0;
 }
 // int main(int ac, char **av)
 // {

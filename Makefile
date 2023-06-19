@@ -3,11 +3,11 @@ NAME = minishell
 LIBFT = ./libft/
 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 CC = cc
 
-FSANITIZE = -fsanitize=address -g
+#FSANITIZE = -fsanitize=address -g3
 
 SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/parsing/ft_lexer.c \
@@ -21,6 +21,7 @@ SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/parsing/ft_lst_three.c \
 					./srcs/parsing/heredoc.c \
 					./srcs/parsing/ft_help.c \
+					./srcs/parsing/fd.c \
 					./srcs/execution/builtin/builtin_utils.c\
 					./srcs/execution/builtin/cd_cmd.c\
 					./srcs/execution/builtin/echo_cmd.c\
@@ -80,11 +81,12 @@ all : $(NAME)
 
 %.o: %.c
 #	@echo "$(B_GREEN)Compiling: $(GREEN)$(notdir $<) 🔨$(NC)"
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(FSANITIZE) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)█\033[0m\c"
 
 $(NAME): compile $(OBJECTS) $(LIBFT)libft.a  done credit
-	@$(CC) $(READLINE) $(OBJECTS)  $(LIBFT)libft.a -o  $(NAME)
+	@stty -echoctl
+	@$(CC) $(FSANITIZE) $(READLINE) $(OBJECTS) $(LIBFT)libft.a -o  $(NAME)
 
 $(LIBFT)libft.a :
 	@make bonus -C $(LIBFT)

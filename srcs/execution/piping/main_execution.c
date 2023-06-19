@@ -32,7 +32,7 @@ void    init_strcut(t_exe *exe)
     int i;
 
     i = 0;
-    exe->size = ft_lstsize_s(shell->mini);
+    exe->size = ft_lstsize_s(g_shell->mini);
 
     if (exe->size > 1)
     {
@@ -74,9 +74,9 @@ void    executing(void)
 		;
 	if (fid != -1 && fid != 0)
 	{
-		shell->g_status = WEXITSTATUS(j);
+		g_shell->g_status = WEXITSTATUS(j);
 		if (WIFSIGNALED(j))
-		    shell->g_status = WTERMSIG(j) + 128;
+		    g_shell->g_status = WTERMSIG(j) + 128;
 	}
 	free_pipes(exe);
 }

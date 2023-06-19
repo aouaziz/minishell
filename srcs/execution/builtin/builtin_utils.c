@@ -44,28 +44,28 @@ void    execute_builtin(t_mini *mini)
 
     fdin = dup(0);
     fdout = dup(1);
-    if (shell->size == 1)
+    if (g_shell->size == 1)
     {
         if (mini->in > 0)
             dup2(mini->in, 0);
         if (mini->out > 1)
            dup2(mini->out, 1);
     }
-    if (!ftt_strcmp("cd", shell->mini->cmds[0]))
-        cd_cmd(shell->mini->cmds);
-   else if (!ftt_strcmp("pwd", shell->mini->cmds[0]))
+    if (!ftt_strcmp("cd", g_shell->mini->cmds[0]))
+        cd_cmd(g_shell->mini->cmds);
+   else if (!ftt_strcmp("pwd", g_shell->mini->cmds[0]))
         pwd_cmd();
-    else if (!ftt_strcmp("echo", shell->mini->cmds[0]))
+    else if (!ftt_strcmp("echo", g_shell->mini->cmds[0]))
         echo_cmd(mini->cmds);
-    else if (!ftt_strcmp("exit", shell->mini->cmds[0]))
+    else if (!ftt_strcmp("exit", g_shell->mini->cmds[0]))
         exit_cmd(mini->cmds);
-    else if (!ftt_strcmp("env", shell->mini->cmds[0]))
+    else if (!ftt_strcmp("env", g_shell->mini->cmds[0]))
         env_cmd(mini->cmds);
-    else if (!ftt_strcmp("unset", shell->mini->cmds[0]))
+    else if (!ftt_strcmp("unset", g_shell->mini->cmds[0]))
         unset_cmd(mini->cmds);
-    else if (!ftt_strcmp("export", shell->mini->cmds[0]))
+    else if (!ftt_strcmp("export", g_shell->mini->cmds[0]))
         export_cmd(mini->cmds);
-    if (shell->size ==1 )
+    if (g_shell->size ==1 )
     {
     dup2(fdin, 0);
     dup2(fdout, 1);

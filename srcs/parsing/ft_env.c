@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:24:19 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/11 14:32:27 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 00:37:15 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,27 +91,11 @@ t_env	*fill_env_list(char **cmd, t_env *env_list)
 		{
 			free(name);
 			free(value);
-			return(NULL);
+			return (NULL);
 		}
 		tmp = ft_env_lst_new(name, value);
 		ft_env_lstadd_back(&env_list, tmp);
 		i++;
 	}
-	return(env_list);
-}
-
-void	print_env_list(t_env *env_list, char **env)
-{
-	int	i;
-
-	i = 0;
-	while (env_list)
-	{
-		printf("\tenv: %s\n", env[i]);
-		printf("env_name: %s\n", env_list->env_name);
-		printf("env_value: %s\n", env_list->env_value);
-		printf("next: %p\n", (void *)env_list->next);
-		env_list = env_list->next;
-		i++;
-	}
+	return (env_list);
 }

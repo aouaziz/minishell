@@ -6,50 +6,55 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 06:04:49 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 04:14:49 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	ft_free_token(t_token *token_list)
+void	ft_free_token(t_token *token)
 {
 	t_token	*current;
 	t_token	*next;
 
-	current = token_list;
+	current = token;
 	while (current != NULL)
 	{
 		next = current->next;
-		free(current->file);    // Free the infile
-		free(current);            // Free the node
+		free(current->file);
+		free(current);
 		current = next;
 	}
+}
+
+void	ft_help_del(t_list *current, t_list *previous, t_list **list)
+{
+	t_list	*tmp;
+
+	tmp = current;
+	if (previous != NULL)
+		previous->next = current->next;
+	else
+		*list = current->next;
+	current = current->next;
+	free(tmp->content);
+	free(tmp);
 }
 
 void	ft_lstdel(t_list **list, char c)
 {
 	t_list	*current;
 	t_list	*previous;
-	t_list	*tmp;
 
 	current = *list;
 	previous = NULL;
 	while (current != NULL)
 	{
 		if (*(char *)(current->content) == c && ft_strlen(current->content) > 1)
-			ft_strlcpy(current->content,current->content + 1,ft_strlen(current->content));
+			ft_strlcpy(current->content, current->content + 1,
+				ft_strlen(current->content));
 		else if (*(char *)(current->content) == c)
-		{
-			tmp = current;
-			if (previous != NULL)
-				previous->next = current->next;
-			else
-				*list = current->next;
-			current = current->next;
-			free(tmp->content);
-			free(tmp);
-		}
+			ft_help_del(current, previous, list);
 		else
 		{
 			previous = current;
@@ -57,6 +62,7 @@ void	ft_lstdel(t_list **list, char c)
 		}
 	}
 }
+
 void	ft_fill_cmds(t_mini *tmp)
 {
 	int		count;
@@ -73,10 +79,39 @@ void	ft_fill_cmds(t_mini *tmp)
 	curr = tmp->cmd_list;
 	while (curr)
 	{
-		curr->content  = ft_replace_c_with_s(curr->content, (char)157, '>');
-		curr->content  = ft_replace_c_with_s(curr->content, (char)158, '<');
+		curr->content = ft_replace_c_with_s(curr->content, (char)157, '>');
+		curr->content = ft_replace_c_with_s(curr->content, (char)158, '<');
 		tmp->cmds[i] = curr->content;
 		i++;
 		curr = curr->next;
 	}
+}
+
+int	is_empty(void)
+{
+	t_mini	*curr;
+	t_token	*token;
+	int		i;
+
+	i = 0;
+	curr = g_shell->mini;
+	while (curr)
+	{
+		token = curr->token;
+		while (token)
+		{
+			if (token->type == DOC)
+				i++;
+			token = token->next;
+		}
+		if (i >= 15)
+		{
+			printf("minishell: maximum here-document count exceeded\n");
+			exit(1);
+		}
+		curr = curr->next;
+	}
+	if (i)
+		return (1);
+	return (0);
 }

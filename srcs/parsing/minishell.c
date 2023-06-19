@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/18 02:06:44 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/19 04:21:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lexer(char *cmd)
 	char	**cmds;
 
 	i = 0;
-	shell->mini = NULL;
+	g_shell->mini = NULL;
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '|', (char)156);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, ' ', (char)155);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '>', (char)157);
@@ -31,6 +31,7 @@ void	ft_lexer(char *cmd)
 		i++;
 	}
 	ft_add_to_the_lst(cmds);
+	free(cmd);
 }
 
 void	handle_sigint(int sig)
@@ -39,7 +40,7 @@ void	handle_sigint(int sig)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		rl_replace_line("",1);
+		rl_replace_line("", 1);
 		rl_redisplay();
 	}
 }
@@ -49,18 +50,18 @@ int	main(int ac, char *av[], char **env)
 	char	*line;
 
 	(void)av;
-	shell = malloc(sizeof(t_shell));
-	shell->env = ftt_strdup_2(env);
-	shell->env_list = fill_env_list(shell->env, shell->env_list);
+	g_shell = malloc(sizeof(t_shell));
+	g_shell->env = ftt_strdup_2(env);
+	g_shell->env_list = fill_env_list(g_shell->env, g_shell->env_list);
 	if (ac != 1)
 	{
 		printf("wrong argument");
 		return (0);
 	}
-	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, handle_sigint);
 	while (1)
 	{
+		signal(SIGINT, handle_sigint);
+		signal(SIGQUIT, handle_sigint);
 		line = readline("minishell$ ");
 		if (!line)
 		{
