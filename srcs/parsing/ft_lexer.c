@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 07:37:15 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/20 16:21:16 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_add_to_the_lst(char **cmd)
 	g_shell->size = ft_lstsize_s(g_shell->mini);
 	if (g_shell->size == 1 && !g_shell->mini->cmd_list)
 		return ;
-	ft_mini_list_print(g_shell->mini);
-	//executing();
+	//ft_mini_list_print(g_shell->mini);
+	executing();
 	free_double_env(cmds);
 }
 
