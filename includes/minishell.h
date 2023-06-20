@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 07:31:13 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/20 16:07:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_shell
 	char			**env;
 	int				size;
 	t_space			l;
+	t_free			*free;
 }					t_shell;
 
 t_shell				*g_shell;
