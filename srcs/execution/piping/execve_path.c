@@ -70,7 +70,7 @@ int	solide_path(t_mini *mini, t_exe *exe)
 		exe->path = ftt_strjoin(exe->path, mini->cmds[0]);
 		if (access(exe->path, F_OK & X_OK) == 0)
 			return (do_free(splited_path), 1);
-		free(exe->path);
+		//free(exe->path);
 		i++;
 	}
 	return (do_free(splited_path), ftt_print_12(mini->cmds[0], 1), 0);

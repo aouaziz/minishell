@@ -28,7 +28,6 @@ void	free_pipes(t_exe *exe)
 		if (exe->size > 1)
 			free(exe->tube);
 	}
-	free(exe->path);
 }
 
 void	init_strcut(t_exe *exe)

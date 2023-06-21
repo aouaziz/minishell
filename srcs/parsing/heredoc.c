@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 11:43:27 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 14:32:08 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_herdoc(int tab[2], char *line, char *lim, int expander)
 		free(line);
 		return (0);
 	}
-	if (!expander)
+	if (!expander && ft_strchr(line, '$'))
 		line = ft_fix_env(line);
 	ft_putstr_fd(line, tab[1]);
 	ft_putstr_fd("\n", tab[1]);
@@ -68,6 +68,7 @@ int	her_doc(char *lim, int expander)
 
 	pipe(tab);
 	fid = fork();
+	line = NULL;
 	signal(SIGINT, SIG_IGN);
 	if (fid == 0)
 	{
@@ -85,6 +86,7 @@ int	her_doc(char *lim, int expander)
 	}
 	wait(0);
 	close(tab[1]);
+	free(line);
 	return (tab[0]);
 }
 

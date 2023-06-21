@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 17:11:10 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:40:21 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 13:37:52 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	size_t	start;
 	int		i;
 
-	str = malloc((ft_counter(s, c) + 1) * sizeof(char *));
+	str = ft_malloc((ft_counter(s, c) + 1) * sizeof(char *));
 	if (!s || !str)
 		return (0);
 	i = -1;

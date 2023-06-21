@@ -68,6 +68,14 @@ void	do_pipe_path(t_mini *mini, t_exe *exe, int status)
 	}
 }
 
+void	ft_free_solo_mini(void)
+{
+	ft_free(g_shell->mini->cmds);
+	ft_free_token(g_shell->mini->token);
+	ft_free_lst(g_shell->mini->cmd_list);
+	free(g_shell->mini);
+}
+
 void	proc_from_in_to_out(t_mini *mini, t_exe *exe)
 {
 	if (builtin_fork_status(mini->cmds) != -1)
@@ -90,6 +98,7 @@ pid_t	pipe_and_fork(t_exe *exe)
 {
 	pid_t	fid;
 	int		i;
+	t_mini *tmp;
 
 	i = 0;
 	signal(SIGINT, cat_handle_sigint);
@@ -106,7 +115,9 @@ pid_t	pipe_and_fork(t_exe *exe)
 				proc_from_in_to_out(g_shell->mini, exe);
 				exit(0);
 			}
-			g_shell->mini = g_shell->mini->next;
+			tmp = g_shell->mini->next;
+			ft_free_solo_mini();
+			g_shell->mini = tmp;
 			i++;
 		}
 	}
