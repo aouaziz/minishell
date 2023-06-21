@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:01:23 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:14:03 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-#include "../Leak_Hunter/leak_hunter.h"
 # include <sys/types.h>
 
 enum				e_TOKEN_ENUM

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 01:09:37 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:47:01 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_token	*add_token_to_list(t_token *token, int type, char *content)
 {
 	t_token	*new;
 
-	new = malloc(sizeof(t_token));
+	new = ft_malloc(sizeof(t_token));
 	if (!new)
 		return (NULL);
 	new->type = type;

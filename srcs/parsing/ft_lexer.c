@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:03:33 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 11:42:50 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_add_to_the_lst(char **cmd)
 		return ;
 	ft_mini_list_print(g_shell->mini);
 	//executing();
-	//ft_free(cmds);
 	free(cmds);
 	
 }

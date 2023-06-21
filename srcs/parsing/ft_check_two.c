@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 11:06:40 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:05:00 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:35:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,17 @@ void	ft_free_lst(t_list *a)
 
 void	ft_free_mini(void)
 {
-	t_mini	*tmp;
+	t_mini	*next;
+	
 
 	while (g_shell->mini)
 	{
-		tmp = g_shell->mini->next;
+		next = g_shell->mini->next;
 		ft_free(g_shell->mini->cmds);
 		ft_free_token(g_shell->mini->token);
 		ft_free_lst(g_shell->mini->cmd_list);
 		free(g_shell->mini);
-		(g_shell->mini) = tmp;
+		g_shell->mini= next;
 	}
-	free(g_shell->mini);
 	g_shell->mini = NULL;
 }

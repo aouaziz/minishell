@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 00:47:37 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:21:36 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_check(char *line)
 	else if (check_quotes(line))
 		return (1);
 	else if (check_pipe(line))
-		return (1);
+		 return (1);
 	else if (ft_strlen(line) == 1)
 	{
 		ft_cmd_not_found();

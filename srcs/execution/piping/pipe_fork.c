@@ -78,6 +78,7 @@ void	proc_from_in_to_out(t_mini *mini, t_exe *exe)
 	}
 	else
 	{
+		
 		do_pipe_path(mini, exe, 1);
 		execve(exe->path, mini->cmds, ft_env_list_to_env());
 		perror("error");

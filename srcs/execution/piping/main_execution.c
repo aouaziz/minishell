@@ -28,6 +28,7 @@ void	free_pipes(t_exe *exe)
 		if (exe->size > 1)
 			free(exe->tube);
 	}
+	free(exe->path);
 }
 
 void	init_strcut(t_exe *exe)
@@ -79,4 +80,5 @@ void	executing(void)
 			g_shell->g_status = WTERMSIG(j) + 128;
 	}
 	free_pipes(exe);
+	free(exe);
 }

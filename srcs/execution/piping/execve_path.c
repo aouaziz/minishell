@@ -90,9 +90,10 @@ int	pathern(t_exe *exe, t_mini *mini)
 		if (dir)
 			return (free(dir), ftt_print_12(mini->cmds[0], 3), 0);
 		if (access(mini->cmds[0], F_OK & X_OK) == 0)
-			return (exe->path = mini->cmds[0], 1);
+			return (free(dir), exe->path = mini->cmds[0], 1);
 		else
-			return (ftt_print_12(mini->cmds[0], 4), 0);
+			return (free(dir),ftt_print_12(mini->cmds[0], 4), 0);
+		free(dir);
 	}
 	return (solide_path(mini, exe));
 }
