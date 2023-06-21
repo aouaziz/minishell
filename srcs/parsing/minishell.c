@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 07:34:21 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:05:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_lexer(char *cmd)
 	char	**cmds;
 
 	i = 0;
-	g_shell->mini = NULL;
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '|', (char)156);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, ' ', (char)155);
 	cmd = ft_replace_c_with_s_in_quotes(cmd, '>', (char)157);
@@ -31,7 +30,8 @@ void	ft_lexer(char *cmd)
 		i++;
 	}
 	ft_add_to_the_lst(cmds);
-	free_double_env(cmds);
+	ft_free(cmds);
+	ft_free_mini();
 	free(cmd);
 }
 
@@ -54,6 +54,8 @@ int	main(int ac, char *av[], char **env)
 	g_shell = malloc(sizeof(t_shell));
 	g_shell->env = ftt_strdup_2(env);
 	g_shell->env_list = fill_env_list(g_shell->env, g_shell->env_list);
+	g_shell->free = NULL;
+	g_shell->mini = NULL;
 	if (ac != 1)
 	{
 		printf("wrong argument");

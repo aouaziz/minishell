@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 07:41:24 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 07:10:09 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*get_value(char *name)
 
 char	*ft_fix_env(char *line)
 {
-	g_shell->l.input = malloc(1);
+	g_shell->l.input = ft_malloc(1);
 	g_shell->l.input[0] = '\0';
 	g_shell->l.i = -1;
 	while (line[++g_shell->l.i])

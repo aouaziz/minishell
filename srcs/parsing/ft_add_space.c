@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:54:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 04:37:34 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 07:08:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*add_spaces(char *input)
 
 	operators = "<>|";
 	g_shell->l.c = '\0';
-	g_shell->l.output = malloc(sizeof(char *) * ft_strlen(input) + 1);
+	g_shell->l.output = ft_malloc(sizeof(char *) * ft_strlen(input) + 1);
 	g_shell->l.input_len = ft_strlen(input);
 	g_shell->l.output_len = 0;
 	g_shell->l.i = 0;
@@ -92,7 +92,7 @@ char	*remove_quotes(char *str)
 	l.output_len = 0;
 	if (!str)
 		return (NULL);
-	l.output = malloc((ft_strlen(str) + 1) * sizeof(char));
+	l.output = ft_malloc((ft_strlen(str) + 1) * sizeof(char));
 	if (!l.output)
 		return (NULL);
 	while (str[++l.i])

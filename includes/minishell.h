@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/20 16:07:07 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/21 10:01:23 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+#include "../Leak_Hunter/leak_hunter.h"
 # include <sys/types.h>
 
 enum				e_TOKEN_ENUM
@@ -129,7 +130,7 @@ void				ft_lstdel(t_list **list, char c);
 void				ft_fill_cmds(t_mini *tmp);
 void				ft_free_env(t_env **head);
 void				ft_free_cmd(t_list *a);
-void				ft_free_mini(t_mini **mini);
+void				ft_free_mini(void);
 void				ft_free_token(t_token *token);
 int					ft_fill_fds(void);
 void				ft_doc(void);
@@ -150,6 +151,7 @@ int					her_doc(char *lim, int expander);
 void				ft_open_fd(t_mini *tmp, t_token *curr);
 int					is_empty(void);
 void				ft_cmd_not_found(void);
+void				ft_free_lst(t_list *a);
 //builtin
 void				env_cmd(char **args);
 void				cd_cmd(char **args);
