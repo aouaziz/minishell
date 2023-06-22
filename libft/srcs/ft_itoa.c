@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 05:16:39 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/02/18 23:00:07 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 22:04:10 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa(int n)
 
 	len = ft_intlen(n);
 	nn = n;
-	s = malloc(sizeof(char) * (len + 1));
+	s = ft_malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (0);
 	s[len--] = '\0';

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 23:29:30 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/19 06:25:47 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 22:08:49 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	export_element(char *str, int l)
 		value = ftt_strjoin(ft_get_value(name), value);
 	ft_env_change_value(name, value);
 	do_status(exist, l, name);
+	free(value);
+	free(name);
 }
 
 void	export_env(char **args)
