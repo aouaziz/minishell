@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:47:01 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:03:50 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_mini	*ft_minilstnew(char **str)
 	t_mini	*new;
 	t_space	l;
 
-	new = malloc(sizeof(t_mini));
+	new = ft_malloc(sizeof(t_mini));
 	if (!new)
 		return (NULL);
 	l.i = 0;
@@ -65,27 +65,4 @@ void	ft_token_list_add_back(t_token **lst, t_token *new)
 		*lst = new;
 	else
 		i->next = new;
-}
-
-void	ft_mini_list_print(t_mini *lst)
-{
-	while (lst)
-	{
-		printf("Index:%d\n", lst->index);
-		printf("CMDs:\n");
-		for (int i = 0; lst->cmds[i] != NULL; i++)
-			printf("  %d: %s\n", i, lst->cmds[i]);
-		printf("Tokens:\n");
-		for (t_token *token = lst->token; token != NULL; token = token->next)
-		{
-			printf("Token Type: %d\n", token->type);
-			printf("Input File: %s\n", token->file);
-			printf("file index: %d\n", lst->token->index);
-		}
-		printf("fd:\n");
-		printf("in:\t %d\n", lst->in);
-		printf("out: \t%d\n", lst->out);
-		printf("next | \n");
-		lst = lst->next;
-	}
 }

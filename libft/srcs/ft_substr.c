@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 03:38:34 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/01/31 02:56:55 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 17:43:54 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	if (len >= slen - start)
 		len = slen - start;
-	r = malloc(sizeof(char) * (len + 1));
+	r = ft_malloc(sizeof(char) * (len + 1));
 	if (!r)
 		return (0);
 	ft_strlcpy(r, s + start, len + 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 10:18:28 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/21 12:30:47 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:13:22 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	cat_handle_sigint(int sig)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		//rl_replace_line("", 1);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 }
@@ -37,7 +37,7 @@ int	valid_arg(char *str)
 	i = 0;
 	if ((str[0] && str[0] != '_') && (str[0] && !ftt_isalpha(str[0])))
 		return (-1);
-	while (str[i] && ftt_isalnum(str[i]))
+	while ((str[i] && ftt_isalnum(str[i])) || (str[i] && str[i] == '_'))
 		i++;
 	if (str[i] == 0)
 		return (1);

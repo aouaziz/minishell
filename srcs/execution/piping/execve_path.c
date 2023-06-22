@@ -66,11 +66,11 @@ int	solide_path(t_mini *mini, t_exe *exe)
 		return (ftt_print_12(mini->cmds[0], 4), 0);
 	while (splited_path && splited_path[i])
 	{
+		free(exe->path);
 		exe->path = ftt_strjoin(splited_path[i], "/");
 		exe->path = ftt_strjoin(exe->path, mini->cmds[0]);
 		if (access(exe->path, F_OK & X_OK) == 0)
 			return (do_free(splited_path), 1);
-		//free(exe->path);
 		i++;
 	}
 	return (do_free(splited_path), ftt_print_12(mini->cmds[0], 1), 0);
@@ -92,7 +92,7 @@ int	pathern(t_exe *exe, t_mini *mini)
 		if (access(mini->cmds[0], F_OK & X_OK) == 0)
 			return (free(dir), exe->path = mini->cmds[0], 1);
 		else
-			return (free(dir),ftt_print_12(mini->cmds[0], 4), 0);
+			return (free(dir), ftt_print_12(mini->cmds[0], 4), 0);
 		free(dir);
 	}
 	return (solide_path(mini, exe));

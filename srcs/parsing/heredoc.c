@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 14:32:08 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:02:44 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_doc(void)
 
 int	ft_herdoc(int tab[2], char *line, char *lim, int expander)
 {
-	if (!ft_strncmp(lim, line, ft_strlen(lim)))
+	if (!ft_strcmp(lim, line))
 	{
 		free(line);
 		return (0);
@@ -84,9 +84,7 @@ int	her_doc(char *lim, int expander)
 		}
 		exit(0);
 	}
-	wait(0);
-	close(tab[1]);
-	free(line);
+	ft_finish_herdoc(line, tab);
 	return (tab[0]);
 }
 

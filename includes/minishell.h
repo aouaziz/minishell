@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:14:03 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:00:27 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ t_list				*add_cmd_to_list(t_list *cmd_list, char *cmd);
 t_token				*add_token_to_list(t_token *token, int type, char *content);
 void				ft_token_list_add_back(t_token **lst, t_token *new);
 t_token				*ft_token_lst_last(t_token *lst);
-void				ft_mini_list_print(t_mini *lst);
 void				ft_miniadd_back(t_mini **list, t_mini *new);
 void				ft_add_to_the_lst(char **cmd);
 char				**ft_fix_c_in_qoutes(char **cmds);
@@ -151,6 +150,8 @@ void				ft_open_fd(t_mini *tmp, t_token *curr);
 int					is_empty(void);
 void				ft_cmd_not_found(void);
 void				ft_free_lst(t_list *a);
+void				ft_start(char **env);
+void				ft_finish_herdoc(char *line, int *tab);
 //builtin
 void				env_cmd(char **args);
 void				cd_cmd(char **args);

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 10:39:39 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:13:35 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,23 @@ void	ft_lexer(char *cmd)
 	free(cmd);
 }
 
+void	ft_start(char **env)
+{
+	g_shell = malloc(sizeof(t_shell));
+	g_shell->env = ftt_strdup_2(env);
+	g_shell->env_list = fill_env_list(g_shell->env, g_shell->env_list);
+	ft_env_change_value("OLDPWD", NULL);
+	g_shell->free = NULL;
+	g_shell->mini = NULL;
+}
+
 void	handle_sigint(int sig)
 {
 	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		rl_replace_line("", 1);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 }
@@ -51,11 +61,7 @@ int	main(int ac, char *av[], char **env)
 	char	*line;
 
 	(void)av;
-	g_shell = malloc(sizeof(t_shell));
-	g_shell->env = ftt_strdup_2(env);
-	g_shell->env_list = fill_env_list(g_shell->env, g_shell->env_list);
-	g_shell->free = NULL;
-	g_shell->mini = NULL;
+	ft_start(env);
 	if (ac != 1)
 	{
 		printf("wrong argument");

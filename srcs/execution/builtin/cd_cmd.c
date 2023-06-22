@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:57:11 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/18 10:03:29 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:16:24 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 void	change_dir(char *path)
 {
 	char	ret[1000];
-	char	*tmp;
 
+	getcwd(ret, 1000);
+	ft_env_change_value("OLDPWD", ret);
 	if (chdir(path) != 0)
 		return (ftt_print_fd(2, "cd: no such file or directory:"),
 			ftt_print_fd(2, path), ftt_print_fd(2, "\n"));
 	getcwd(ret, 1000);
-	tmp = ftt_strdup(ret);
-	ft_env_change_value("OLDPWD", ft_get_value("PWD"));
-	ft_env_change_value("PWD", tmp);
+	ft_env_change_value("PWD", ret);
 }
 
 void	cd_cmd(char **args)

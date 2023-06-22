@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 13:23:52 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/20 14:03:57 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:03:41 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_lstadd_back_free(t_free **lst, t_free *new)
 
 	if (!new)
 		return ;
-	
 	if (!lst || !*lst)
 		i = NULL;
 	else
@@ -40,7 +39,7 @@ t_free	*ft_lstlast_free(t_free *lst)
 		lst = lst->next;
 	}
 	return (lst);
-	return NULL;
+	return (NULL);
 }
 
 t_free	*ft_lstnew_free(void *content)
@@ -55,15 +54,22 @@ t_free	*ft_lstnew_free(void *content)
 	return (new);
 }
 
-void *ft_malloc(int size)
+void	*ft_malloc(int size)
 {
-	void *ptr;
-	t_free *new;
-	
+	void	*ptr;
+	t_free	*new;
+
 	ptr = malloc(size);
 	if (!ptr)
 		return (NULL);
 	new = ft_lstnew_free(ptr);
 	ft_lstadd_back_free(&g_shell->free, new);
 	return (ptr);
+}
+
+void	ft_finish_herdoc(char *line, int *tab)
+{
+	wait(0);
+	close(tab[1]);
+	free(line);
 }

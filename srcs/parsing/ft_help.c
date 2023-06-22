@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 02:56:01 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/19 00:47:37 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 17:47:08 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_env_change_value(char *name, char *value)
 	{
 		if (!ft_strcmp(tmp->env_name, name))
 		{
+			free(tmp->env_value);
 			tmp->env_value = value;
 			return (0);
 		}
@@ -62,7 +63,7 @@ char	**ft_env_list_to_env(void)
 	i = 0;
 	tmp = g_shell->env_list;
 	env_size = ft_lst_env_size(tmp);
-	env = malloc((env_size + 1) * sizeof(char *));
+	env = ft_malloc((env_size + 1) * sizeof(char *));
 	if (!env)
 		return (NULL);
 	env[env_size] = NULL;

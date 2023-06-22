@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:48:06 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/20 16:06:41 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:05:16 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
 typedef struct s_free
 {
 	unsigned long	adres;
@@ -82,9 +83,9 @@ void				ft_free(char **str);
 int					ft_strcmp(char *s1, char *s2);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_charjoin(char *s1, char s2);
-int	ft_strlen_array(char **array);
-void *ft_malloc(int size);
-t_free	*ft_lstnew_free(void *content);
-t_free	*ft_lstlast_free(t_free *lst);
-void	ft_lstadd_back_free(t_free **lst, t_free *new);
+int					ft_strlen_array(char **array);
+void				*ft_malloc(int size);
+t_free				*ft_lstnew_free(void *content);
+t_free				*ft_lstlast_free(t_free *lst);
+void				ft_lstadd_back_free(t_free **lst, t_free *new);
 #endif

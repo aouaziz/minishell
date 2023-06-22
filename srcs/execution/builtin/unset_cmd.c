@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/19 06:25:47 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:12:41 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	unset_args(char *str)
 	char	*tmp;
 
 	tmp = get_key(str);
+	if (ft_strncmp(tmp, "_", 2) == 0)
+	{
+		g_shell->g_status = 0;
+		return ;
+	}
 	if (tmp == NULL)
 		return ;
 	if (ft_lstdel_env(&g_shell->env_list, str))

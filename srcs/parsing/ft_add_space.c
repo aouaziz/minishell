@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 16:54:53 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/21 07:08:07 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 18:03:32 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ char	*add_spaces(char *input)
 	while (g_shell->l.i < g_shell->l.input_len)
 	{
 		if ((input[g_shell->l.i] == '>' && input[g_shell->l.i + 1] == '>')
-			|| (input[g_shell->l.i] == '<' && input[(g_shell->l.i)
-					+ 1] == '<'))
+			|| (input[g_shell->l.i] == '<' && input[(g_shell->l.i) + 1] == '<'))
 			ft_check_operator(&g_shell->l, input);
 		else if (ft_strchr(operators, input[g_shell->l.i]))
 			ft_check_operator_two(&g_shell->l, input);
