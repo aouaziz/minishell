@@ -5,7 +5,7 @@ LIBFT = ./libft/
 
 CFLAGS = -Wall -Wextra -Werror  
 
-CC = cc
+CC = cc -fsanitize=address -g3
 
 #FSANITIZE = -fsanitize=address -g3
 

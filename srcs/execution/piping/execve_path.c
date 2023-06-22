@@ -33,7 +33,7 @@ char	**split_path(char **env)
 
 	i = 0;
 	new_str = NULL;
-	big_path = get_content_env(env, "PATH=");
+	big_path = get_content_path(env, "PATH=");
 	return (ft_split((char const *)big_path, ':'));
 }
 

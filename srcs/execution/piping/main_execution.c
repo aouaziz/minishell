@@ -15,6 +15,14 @@
 
 #include "../../../includes/minishell.h"
 
+void	ft_free_solo_mini(void)
+{
+	ft_free(g_shell->mini->cmds);
+	ft_free_token(g_shell->mini->token);
+	ft_free_lst(g_shell->mini->cmd_list);
+	free(g_shell->mini);
+}
+
 void	free_pipes(t_exe *exe)
 {
 	int	i;

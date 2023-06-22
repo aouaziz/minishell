@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/22 18:00:27 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/23 00:15:56 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void				ft_cmd_not_found(void);
 void				ft_free_lst(t_list *a);
 void				ft_start(char **env);
 void				ft_finish_herdoc(char *line, int *tab);
+void				ft_free_solo_mini(void);
 //builtin
 void				env_cmd(char **args);
 void				cd_cmd(char **args);
@@ -179,6 +180,7 @@ void				print_err_env(char *str);
 char				**unset_var_env(char **env, int index);
 char				**realloc_env_var(char **env, int count);
 char				**set_env_var(char **env, int index, char *str);
+char				*get_content_path(char **env, char *path);
 
 ////var_utils
 void				free_double_env(char **str);
