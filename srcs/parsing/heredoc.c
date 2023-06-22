@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/22 18:02:44 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/22 21:55:59 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	handle_doc_sigint(int signal)
 {
 	(void)signal;
-	ft_putstr_fd("\n", 1);
 	exit(1);
 }
 
@@ -72,7 +71,7 @@ int	her_doc(char *lim, int expander)
 	signal(SIGINT, SIG_IGN);
 	if (fid == 0)
 	{
-		signal(SIGINT, handle_doc_sigint);
+		signal(SIGINT, SIG_IGN);
 		signal(SIGQUIT, handle_doc_sigint);
 		while (1)
 		{
@@ -108,4 +107,6 @@ void	ft_open_fd(t_mini *tmp, t_token *curr)
 		g_shell->g_status = 1;
 		tmp->out = -1;
 	}
+	else
+		g_shell->g_status = 0;
 }

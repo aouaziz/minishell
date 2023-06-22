@@ -100,7 +100,7 @@ pid_t	pipe_and_fork(t_exe *exe)
 	t_mini	*tmp;
 
 	i = 0;
-	signal(SIGINT, cat_handle_sigint);
+	signal(SIGINT,SIG_IGN);
 	signal(SIGQUIT, cat_handle_sigint);
 	if (exe->size == 1 && builtin_fork_status(g_shell->mini->cmds) != -1)
 		return (execute_builtin(g_shell->mini), 0);

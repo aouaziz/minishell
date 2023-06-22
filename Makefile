@@ -77,8 +77,8 @@ all : $(NAME)
 	@echo "$(GREEN)█\033[0m\c"
 
 $(NAME): compile $(OBJECTS) $(LIBFT)libft.a  done credit
-	@stty -echoctl
 	@$(CC) $(FSANITIZE) $(READLINE) $(OBJECTS) $(LIBFT)libft.a -o  $(NAME)
+	@stty -echoctl
 
 $(LIBFT)libft.a :
 	@make bonus -C $(LIBFT)
