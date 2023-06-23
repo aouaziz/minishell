@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 00:15:56 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/23 22:31:36 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <sys/types.h>
+# include <sys/errno.h>
+#include <stdio.h>
+#include <string.h>
 
 enum				e_TOKEN_ENUM
 {
@@ -42,6 +45,7 @@ typedef struct s_mini
 	char			**cmds;
 	int				in;
 	int				out;
+	char 			*error;
 	int				doc;
 	struct s_mini	*next;
 	int				index;
@@ -146,7 +150,6 @@ int					her_doc(char *lim, int expander);
 void				handle_sigint(int sig);
 void				cat_handle_sigint(int sig);
 int					her_doc(char *lim, int expander);
-void				ft_open_fd(t_mini *tmp, t_token *curr);
 int					is_empty(void);
 void				ft_cmd_not_found(void);
 void				ft_free_lst(t_list *a);
@@ -168,6 +171,7 @@ void				do_status(int exist, int l, char *str);
 int					valid_arg(char *str);
 void				fill_env_list_add_back(char *name, char *value);
 void				change_status_export(int status, char *name);
+int					ft_open_fd(t_mini *tmp, t_token *curr);
 
 //env_manipulation
 void				print_env(char **env);
@@ -203,6 +207,8 @@ long				ftt_atoi_l(char *str);
 char				**ftt_strdup_2(char **str);
 int					ftt_strcmp(char *s1, char *s2);
 int					ft_lstsize_s(t_mini *lst);
+void	check_error_file(t_mini *mini);
+int	ft_file_error(t_mini *tmp);
 
 //print
 void				ftt_print_fd(int fd, char *str);

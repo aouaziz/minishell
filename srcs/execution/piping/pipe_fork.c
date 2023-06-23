@@ -35,9 +35,21 @@ void	check_error_file(t_mini *mini)
 		ftt_print_fd(2, "minishell: ambigious redirect\n");
 		exit(1);
 	}
+	printf("mini->in = %d\n", mini->in);
+	printf("mini->out = %d\n", mini->out);
 	if (mini->in == -1 || mini->out == -1)
 	{
 		ftt_print_fd(2, "minishell: No such file or directory\n");
+		exit(1);
+	}
+	if (mini->out == -2)
+	{
+		ftt_print_fd(2, "minishell: Permission denied\n");
+		exit(1);
+	}
+	else if (mini->out == -4)
+	{
+		ftt_print_fd(2, "minishell: is a directory\n");
 		exit(1);
 	}
 }
@@ -103,6 +115,7 @@ pid_t	pipe_and_fork(t_exe *exe)
 			fid = fork();
 			if (fid == 0)
 			{
+
 				proc_from_in_to_out(g_shell->mini, exe);
 				exit(0);
 			}

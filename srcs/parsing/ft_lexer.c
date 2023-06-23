@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/22 17:52:36 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/23 22:59:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_add_to_the_lst(char **cmd)
 		ft_doc();
 	ft_fill_fds();
 	g_shell->size = ft_lstsize_s(g_shell->mini);
-	if (g_shell->size == 1 && !g_shell->mini->cmd_list)
+	if (g_shell->size == 1 && !g_shell->mini->cmd_list && !g_shell->mini->token)
 		return ;
 	executing();
 	free(cmds);

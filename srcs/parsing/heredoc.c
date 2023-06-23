@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/22 21:55:59 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/23 22:53:37 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	her_doc(char *lim, int expander)
 	signal(SIGINT, SIG_IGN);
 	if (fid == 0)
 	{
-		signal(SIGINT, SIG_IGN);
-		signal(SIGQUIT, handle_doc_sigint);
+		signal(SIGINT, handle_doc_sigint);
+		signal(SIGQUIT, SIG_IGN);
 		while (1)
 		{
 			line = readline(">");
@@ -86,12 +86,41 @@ int	her_doc(char *lim, int expander)
 	ft_finish_herdoc(line, tab);
 	return (tab[0]);
 }
+int	ft_file_error(t_mini *tmp)
+{
+	if(tmp->out < 0)
+	{
+		g_shell->g_status = 1;
+		tmp->out = -1;
+	}
+	if (tmp->in < 0)
+	{
+		g_shell->g_status = 1;
+		tmp->out = -1;
+	}
+	if(errno == 21)
+		tmp->out = -4;
+	else if(errno == 13)
+		tmp->out = -2;
+	if(tmp->in < 0 || tmp->out < 0)
+		return(1);
+	return(0);
+}
+// int ft_check_file(t_token *curr)
+// {
+	// if ()
+	// 
+	// return(0);
+// }
 
-void	ft_open_fd(t_mini *tmp, t_token *curr)
+int ft_open_fd(t_mini *tmp, t_token *curr)
 {
 	int	file;
 
 	file = tmp->in;
+	// if(ft_check_file(curr))
+		// return(1);
+	//printf("file: %s\n", curr->file);
 	if (curr->type == IN)
 	{
 		tmp->in = open(curr->file, O_RDONLY);
@@ -102,11 +131,8 @@ void	ft_open_fd(t_mini *tmp, t_token *curr)
 		tmp->out = open(curr->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	else if (curr->type == APD)
 		tmp->out = open(curr->file, O_CREAT | O_RDWR | O_APPEND, 0644);
-	if (tmp->out < 0 || tmp->in < 0)
-	{
-		g_shell->g_status = 1;
-		tmp->out = -1;
-	}
-	else
-		g_shell->g_status = 0;
+	
+	if(ft_file_error(tmp))
+		return(1);
+	return (0);
 }

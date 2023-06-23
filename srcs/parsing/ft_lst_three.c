@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 00:51:16 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/23 02:03:05 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	ft_lstdel(t_list **list, char c)
 	previous = NULL;
 	while (current != NULL)
 	{
-		if (*(char *)(current->content) == c && ft_strlen_two(current->content) > 1)
+		if (*(char *)(current->content) == c && ft_strlen(current->content) > 1)
 			ft_strlcpy(current->content, current->content + 1,
-				ft_strlen_two(current->content));
+				ft_strlen(current->content));
 		else if (*(char *)(current->content) == c)
 			ft_help_del(current, previous, list);
 		else
