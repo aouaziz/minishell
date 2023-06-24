@@ -30,13 +30,11 @@ void	close_pipes(t_exe *exe)
 
 void	check_error_file(t_mini *mini)
 {
-	if (mini->out == -3)
+	if (mini->out == -3 || mini->in == -3)
 	{
 		ftt_print_fd(2, "minishell: ambigious redirect\n");
 		exit(1);
 	}
-	printf("mini->in = %d\n", mini->in);
-	printf("mini->out = %d\n", mini->out);
 	if (mini->in == -1 || mini->out == -1)
 	{
 		ftt_print_fd(2, "minishell: No such file or directory\n");

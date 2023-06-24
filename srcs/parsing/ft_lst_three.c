@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:57:47 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 02:03:05 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 01:03:43 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_fill_cmds(t_mini *tmp)
 	int		i;
 	t_list	*curr;
 
-	ft_lstdel(&tmp->cmd_list, '\x7F');
+	ft_lstdel(&tmp->cmd_list, (char)159);
 	count = ft_lstsize(tmp->cmd_list);
 	i = 0;
 	tmp->cmds = malloc(sizeof(char *) * (count + 1));

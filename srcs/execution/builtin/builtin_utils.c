@@ -40,13 +40,38 @@ int	builtin_fork_status(char **str)
 	return (-1);
 }
 
+int	check_one(t_mini *mini)
+{
+	if (mini->out == -3 || mini->in == -3)
+	{
+		ftt_print_fd(2, "minishell: ambigious redirect\n");
+		return (1);
+	}
+	if (mini->in == -1 || mini->out == -1)
+	{
+		ftt_print_fd(2, "minishell: No such file or directory\n");
+		return (1);
+	}
+	if (mini->out == -2)
+	{
+		ftt_print_fd(2, "minishell: Permission denied\n");
+		return (1);
+	}
+	else if (mini->out == -4)
+	{
+		ftt_print_fd(2, "minishell: is a directory\n");
+		return (1);
+	}
+	return (0);
+}
+
 void	dup_one(int fdin, int fdout, int status, t_mini *mini)
 {
 	if (g_shell->size == 1 && status == 1)
 	{
-		if (mini->in > 0)
+		if (mini->in >= 0)
 			dup2(mini->in, 0);
-		if (mini->out > 1)
+		if (mini->out >= 0)
 			dup2(mini->out, 1);
 	}
 	else if (g_shell->size == 1 && status == 2)
@@ -66,6 +91,8 @@ void	execute_builtin(t_mini *mini)
 
 	fdin = dup(0);
 	fdout = dup(1);
+	if (check_one(mini))
+		return ;
 	dup_one(fdin, fdout, 1, mini);
 	if (!ftt_strcmp("cd", g_shell->mini->cmds[0]))
 		cd_cmd(g_shell->mini->cmds);

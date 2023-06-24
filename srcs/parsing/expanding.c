@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 00:46:04 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 01:03:29 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*get_value(char *name)
 	}
 	free(name);
 	unprintable = malloc(2);
-	unprintable[0] = '\x7F';
+	unprintable[0] = (char)159;
 	unprintable[1] = '\0';
 	return (unprintable);
 }

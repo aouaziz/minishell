@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 22:53:37 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 01:50:41 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,21 +106,20 @@ int	ft_file_error(t_mini *tmp)
 		return(1);
 	return(0);
 }
-// int ft_check_file(t_token *curr)
-// {
-	// if ()
-	// 
-	// return(0);
-// }
 
 int ft_open_fd(t_mini *tmp, t_token *curr)
 {
 	int	file;
 
 	file = tmp->in;
-	// if(ft_check_file(curr))
-		// return(1);
-	//printf("file: %s\n", curr->file);
+	if(ft_strchr(curr->file, (char)159))
+	{
+		if(curr->type == IN)
+			tmp->in = -3;
+		else
+			tmp->out = -3;
+		return(1);
+	}
 	if (curr->type == IN)
 	{
 		tmp->in = open(curr->file, O_RDONLY);
