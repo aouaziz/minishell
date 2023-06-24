@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 08:41:03 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/23 00:14:34 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 20:59:03 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	*get_content_env(char **env, char *path)
 {
 	return (env[get_indice_env(env, path)]);
 }
+
 int	get_indice_path(char **env, char *path)
 {
 	int	i;

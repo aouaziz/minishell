@@ -17,11 +17,12 @@
 
 int	builtin_fork_status(char **str)
 {
+	ftt_print_fd(2, "hnna\n");
 	if (!str)
 		return (-1);
 	if (!ftt_strncmp("cd", str[0], 3))
 		return (1);
-	if (!ftt_strncmp("pwd", str[0],4))
+	if (!ftt_strncmp("pwd", str[0], 4))
 		return (0);
 	if (!ftt_strncmp("echo", str[0], 5))
 		return (0);
@@ -31,7 +32,7 @@ int	builtin_fork_status(char **str)
 		return (0);
 	if (!ftt_strncmp("unset", str[0], 6))
 		return (1);
-	if (!ftt_strncmp("export", str[0],7))
+	if (!ftt_strncmp("export", str[0], 7))
 	{
 		if (!str[1])
 			return (0);

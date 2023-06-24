@@ -22,6 +22,7 @@ SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/parsing/ft_help.c \
 					./srcs/parsing/fd.c \
 					./srcs/parsing/ft_free.c \
+					./srcs/parsing/norm.c \
 					./srcs/execution/builtin/builtin_utils.c\
 					./srcs/execution/builtin/cd_cmd.c\
 					./srcs/execution/builtin/echo_cmd.c\

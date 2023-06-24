@@ -97,14 +97,16 @@ void	proc_from_in_to_out(t_mini *mini, t_exe *exe)
 
 pid_t	pipe_and_fork(t_exe *exe)
 {
-	pid_t	fid;
+	pid_t	fid ;
 	int		i;
 	t_mini	*tmp;
 
 	i = -1;
+	fid = 0;
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, cat_handle_sigint);
-	if (exe->size == 1 && builtin_fork_status(g_shell->mini->cmds) != -1)
+	if ((exe->size == 1 && !g_shell->mini->cmd_list) || (exe->size == 1
+			&& (builtin_fork_status(g_shell->mini->cmds) != -1)))
 		return (execute_builtin(g_shell->mini), 0);
 	else
 	{
@@ -113,7 +115,6 @@ pid_t	pipe_and_fork(t_exe *exe)
 			fid = fork();
 			if (fid == 0)
 			{
-
 				proc_from_in_to_out(g_shell->mini, exe);
 				exit(0);
 			}

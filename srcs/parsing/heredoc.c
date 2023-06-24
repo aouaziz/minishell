@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 07:09:27 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 01:50:41 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 20:57:21 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,25 @@ void	ft_doc(void)
 {
 	int		expander;
 	t_mini	*mini;
+	t_token	*token;
 
 	mini = g_shell->mini;
 	expander = 0;
 	while (mini)
 	{
-		while (mini->token)
+		token = mini->token;
+		while (token)
 		{
-			if (mini->token->type == DOC)
+			if (token->type == DOC)
 			{
-				if (ft_strchr(mini->token->file, '\'')
-					|| ft_strchr(mini->token->file, '\"'))
+				if (ft_strchr(token->file, '\'') || ft_strchr(token->file,
+						'\"'))
 					expander = 1;
-				mini->token->file = remove_quotes(mini->token->file);
-				mini->in = her_doc(mini->token->file, expander);
+				token->file = remove_quotes(token->file);
+				mini->in = her_doc(token->file, expander);
 				mini->doc = mini->token->index;
 			}
-			mini->token = mini->token->next;
+			token = token->next;
 		}
 		mini = mini->next;
 	}
@@ -86,9 +88,10 @@ int	her_doc(char *lim, int expander)
 	ft_finish_herdoc(line, tab);
 	return (tab[0]);
 }
+
 int	ft_file_error(t_mini *tmp)
 {
-	if(tmp->out < 0)
+	if (tmp->out < 0)
 	{
 		g_shell->g_status = 1;
 		tmp->out = -1;
@@ -98,40 +101,11 @@ int	ft_file_error(t_mini *tmp)
 		g_shell->g_status = 1;
 		tmp->out = -1;
 	}
-	if(errno == 21)
+	if (errno == 21)
 		tmp->out = -4;
-	else if(errno == 13)
+	else if (errno == 13)
 		tmp->out = -2;
-	if(tmp->in < 0 || tmp->out < 0)
-		return(1);
-	return(0);
-}
-
-int ft_open_fd(t_mini *tmp, t_token *curr)
-{
-	int	file;
-
-	file = tmp->in;
-	if(ft_strchr(curr->file, (char)159))
-	{
-		if(curr->type == IN)
-			tmp->in = -3;
-		else
-			tmp->out = -3;
-		return(1);
-	}
-	if (curr->type == IN)
-	{
-		tmp->in = open(curr->file, O_RDONLY);
-		if (tmp->doc < curr->index && file > 0 && tmp->in > 0)
-			tmp->in = file;
-	}
-	else if (curr->type == OUT)
-		tmp->out = open(curr->file, O_CREAT | O_RDWR | O_TRUNC, 0644);
-	else if (curr->type == APD)
-		tmp->out = open(curr->file, O_CREAT | O_RDWR | O_APPEND, 0644);
-	
-	if(ft_file_error(tmp))
-		return(1);
+	if (tmp->in < 0 || tmp->out < 0)
+		return (1);
 	return (0);
 }

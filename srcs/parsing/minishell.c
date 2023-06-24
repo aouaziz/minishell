@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 15:24:00 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 01:43:45 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 20:55:43 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,24 +60,24 @@ int	main(int ac, char *av[], char **env)
 	char	*line;
 
 	(void)av;
-	ft_start(env);
-	if (ac != 1)
+	if (ac == 1)
 	{
-		printf("wrong argument");
-		return (0);
-	}
-	while (1)
-	{
-		signal(SIGINT, handle_sigint);
-		signal(SIGQUIT, SIG_IGN);
-		line = readline("minishell$ ");
-		if (!line)
+		ft_start(env);
+		while (1)
 		{
-			printf("exit\n");
-			exit(0);
+			signal(SIGINT, handle_sigint);
+			signal(SIGQUIT, SIG_IGN);
+			line = readline("minishell$ ");
+			if (!line)
+			{
+				printf("exit\n");
+				exit(0);
+			}
+			add_history(line);
+			if (!ft_check(line))
+				ft_lexer(line);
 		}
-		add_history(line);
-		if (!ft_check(line))
-			ft_lexer(line);
 	}
+	else
+		ftt_print_fd(2, "wrong argument\n");
 }

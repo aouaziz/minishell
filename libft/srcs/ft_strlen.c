@@ -6,11 +6,12 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 14:19:54 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 02:45:48 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 21:01:28 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+
 int	ft_strlen(const char *s)
 {
 	int	i;

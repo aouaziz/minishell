@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 09:04:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 02:50:05 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 21:01:48 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_charjoin(char *s1, char s2)
 		return (0);
 	slen1 = ft_strlen(s1);
 	r = ft_malloc(slen1 + 2);
-	c =	ft_malloc(2);
+	c = ft_malloc(2);
 	if (!r || !c)
 		return (0);
 	c[0] = s2;

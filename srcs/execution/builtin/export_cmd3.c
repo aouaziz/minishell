@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mel-garr <mel-garr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 10:18:28 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/24 00:16:49 by mel-garr         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:00:37 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	cat_handle_sigint(int sig)
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
-		//lace_line("", 0);
 		rl_redisplay();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 05:09:56 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 20:55:26 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	fill_index(void)
 	t_mini	*tmp;
 	t_token	*tok;
 
-	i = 1;
+	i = 0;
 	tmp = g_shell->mini;
 	tok = g_shell->mini->token;
 	while (tmp)

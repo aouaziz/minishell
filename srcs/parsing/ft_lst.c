@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:19:30 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 03:46:15 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 07:05:08 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ t_mini	*ft_minilstnew(char **str)
 	ft_lst_fix(new);
 	while (str[l.i])
 	{
-		if (!ft_strncmp(str[l.i], ">>", 3))
+		if (!ft_strncmp(str[l.i], ">>", 2))
 			new->token = add_token_to_list(new->token, APD, str[++l.i]);
-		else if (ft_strncmp(str[l.i], ">", 2) == 0)
+		else if (ft_strncmp(str[l.i], ">", 1) == 0)
 			new->token = add_token_to_list(new->token, OUT, str[++l.i]);
-		else if (ft_strncmp(str[l.i], "<<", 3) == 0)
+		else if (ft_strncmp(str[l.i], "<<", 2) == 0)
 			new->token = add_token_to_list(new->token, DOC, str[++l.i]);
-		else if (ft_strncmp(str[l.i], "<", 2) == 0)
+		else if (ft_strncmp(str[l.i], "<", 1) == 0)
 			new->token = add_token_to_list(new->token, IN, str[++l.i]);
 		else
 			new->cmd_list = add_cmd_to_list(new->cmd_list, str[l.i]);

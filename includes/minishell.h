@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 02:24:42 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 06:48:36 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_mini
 	int				out;
 	char			*error;
 	int				doc;
+	int				doc_fd;
 	struct s_mini	*next;
 	int				index;
 }					t_mini;
