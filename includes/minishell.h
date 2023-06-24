@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:38:48 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 22:31:36 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 02:24:42 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <dirent.h>
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <sys/types.h>
+# include <stdio.h>
+# include <string.h>
 # include <sys/errno.h>
-#include <stdio.h>
-#include <string.h>
+# include <sys/types.h>
 
 enum				e_TOKEN_ENUM
 {
@@ -45,7 +45,7 @@ typedef struct s_mini
 	char			**cmds;
 	int				in;
 	int				out;
-	char 			*error;
+	char			*error;
 	int				doc;
 	struct s_mini	*next;
 	int				index;
@@ -207,8 +207,8 @@ long				ftt_atoi_l(char *str);
 char				**ftt_strdup_2(char **str);
 int					ftt_strcmp(char *s1, char *s2);
 int					ft_lstsize_s(t_mini *lst);
-void	check_error_file(t_mini *mini);
-int	ft_file_error(t_mini *tmp);
+void				check_error_file(t_mini *mini);
+int					ft_file_error(t_mini *tmp);
 
 //print
 void				ftt_print_fd(int fd, char *str);

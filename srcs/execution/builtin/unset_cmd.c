@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 07:56:53 by mel-garr          #+#    #+#             */
-/*   Updated: 2023/06/22 18:12:41 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 04:12:57 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	unset_args(char *str)
 	char	*tmp;
 
 	tmp = get_key(str);
+	if (!tmp)
+		return ;
 	if (ft_strncmp(tmp, "_", 2) == 0)
 	{
 		g_shell->g_status = 0;

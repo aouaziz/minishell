@@ -19,19 +19,19 @@ int	builtin_fork_status(char **str)
 {
 	if (!str)
 		return (-1);
-	if (!ftt_strcmp("cd", str[0]))
+	if (!ftt_strncmp("cd", str[0], 3))
 		return (1);
-	if (!ftt_strcmp("pwd", str[0]))
+	if (!ftt_strncmp("pwd", str[0],4))
 		return (0);
-	if (!ftt_strcmp("echo", str[0]))
+	if (!ftt_strncmp("echo", str[0], 5))
 		return (0);
-	if (!ftt_strcmp("exit", str[0]))
+	if (!ftt_strncmp("exit", str[0], 5))
 		return (1);
-	if (!ftt_strcmp("env", str[0]))
+	if (!ftt_strncmp("env", str[0], 4))
 		return (0);
-	if (!ftt_strcmp("unset", str[0]))
+	if (!ftt_strncmp("unset", str[0], 6))
 		return (1);
-	if (!ftt_strcmp("export", str[0]))
+	if (!ftt_strncmp("export", str[0],7))
 	{
 		if (!str[1])
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:14:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 02:16:25 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 04:20:24 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ void	ft_add_to_the_lst(char **cmd)
 		ft_doc();
 	ft_fill_fds();
 	g_shell->size = ft_lstsize_s(g_shell->mini);
-	if (g_shell->size == 1 && !g_shell->mini->cmd_list && !g_shell->mini->token)
-		return ;
 	executing();
 	free(cmds);
 }
@@ -47,7 +45,7 @@ void	fill_index(void)
 	t_mini	*tmp;
 	t_token	*tok;
 
-	i = 0;
+	i = 1;
 	tmp = g_shell->mini;
 	tok = g_shell->mini->token;
 	while (tmp)
@@ -73,7 +71,7 @@ char	**ft_fix_c_in_qoutes(char **cmds)
 	while (cmds[i])
 	{
 		cmds[i] = ft_replace_c_with_s_in_quotes(cmds[i], (char)155, ' ');
-		if ((i > 0 && ft_strncmp(cmds[i - 1], "<<", 2)) || cmds[1] == NULL)
+		if ((i > 0 && ft_strncmp(cmds[i - 1], "<<", 3)) || cmds[1] == NULL)
 		{
 			if (ft_strchr(cmds[i], '$'))
 				cmds[i] = ft_fix_env(cmds[i]);

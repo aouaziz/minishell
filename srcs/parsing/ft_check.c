@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 08:20:23 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/22 17:52:16 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 03:52:07 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_check(char *line)
 {
 	if (!ft_strlen(line))
 	{
-		g_shell->g_status = 127;
+		g_shell->g_status = 0;
 		return (1);
 	}
 	else if (ft_strlen(line) == 2 && (!ft_strcmp(line, "\"\"")

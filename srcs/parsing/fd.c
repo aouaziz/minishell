@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 00:31:22 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 22:26:22 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 04:21:18 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_fill_fds(void)
 	while (tmp)
 	{
 		curr = tmp->token;
+		if(tmp->doc == 0)
+			tmp->in = 0;
 		tmp->out = 1;
 		while (curr)
 		{
@@ -32,6 +34,9 @@ int	ft_fill_fds(void)
 			tmp->out = -20;
 		if (tmp->in == 0)
 			tmp->in = -20;
+		printf("in: %d\n", tmp->in);
+		printf("out: %d\n", tmp->out);
+		printf("next pipe\n");
 		tmp = tmp->next;
 	}
 	return (0);

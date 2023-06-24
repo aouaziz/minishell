@@ -7,7 +7,6 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = cc 
 
-#FSANITIZE = -fsanitize=address -g3
 
 SOURCES =			./srcs/parsing/minishell.c \
 					./srcs/parsing/ft_lexer.c \

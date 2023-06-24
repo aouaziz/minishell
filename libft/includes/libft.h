@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 21:48:06 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/23 00:22:57 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 02:46:17 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-int					ft_strlen_two(const char *s);
+int					ft_strlen(const char *s);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
