@@ -6,7 +6,7 @@
 /*   By: aouaziz <aouaziz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:37:15 by aouaziz           #+#    #+#             */
-/*   Updated: 2023/06/24 01:03:29 by aouaziz          ###   ########.fr       */
+/*   Updated: 2023/06/24 05:07:06 by aouaziz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*ft_fix_env(char *line)
 					line[g_shell->l.i]);
 			g_shell->l.i = g_shell->l.i + 2;
 		}
-		if (line[g_shell->l.i] == '$' && g_shell->l.c != '\'')
+		else if (line[g_shell->l.i] == '$' && g_shell->l.c != '\'')
 		{
 			g_shell->l.output = get_name(line, &g_shell->l);
 			g_shell->l.input = ft_strjoin(g_shell->l.input,
